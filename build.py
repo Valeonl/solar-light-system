@@ -220,7 +220,7 @@ HTML = f"""<!DOCTYPE html>
 <div class="box">
   <b>Другие проекты на этом сайте:</b>
   <a href="budget.html">бюджетный свет до 1000 ₽</a> ·
-  <a href="bt-display.html">Bluetooth-дисплей на аккумуляторе (от 736 ₽)</a>
+  <a href="bt-display.html">Bluetooth-дисплей на аккумуляторе: экран, 18650 и зарядка (1 483 ₽, доставка завтра)</a>
 </div>
 
 <h2>Как это работает</h2>
