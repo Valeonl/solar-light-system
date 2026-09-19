@@ -11,7 +11,9 @@
    "note": "Достаточно воткнуть в землю — светит сам с наступлением темноты",
    "url": "https://www.ozon.ru/product/svetilnik-letniy-sadovyy-na-solnechnoy-bataree-4-5h30h4-5-sm-1-led-svechenie-beloe-2150573373/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-c/wc500/7551804468.jpg",
-   "img_local": "img/b_lamp132.webp"
+   "img_local": "img/b_lamp132.webp",
+   "rating": 4.6,
+   "reviews": 45
   },
   {
    "key": "demmax",
@@ -23,7 +25,9 @@
    "note": "Приезжает на следующий день, если не хочешь ждать",
    "url": "https://www.ozon.ru/product/svetilnik-sadovyy-na-solnechnoy-bataree-ulichnyy-demmax-1-sht-1991186826/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-n/wc500/7433093039.jpg",
-   "img_local": "img/b_demmax.webp"
+   "img_local": "img/b_demmax.webp",
+   "rating": 4.8,
+   "reviews": 2064
   },
   {
    "key": "spot660",
@@ -35,7 +39,9 @@
    "note": "Светит заметно сильнее декоративного светильника; вешается на стену",
    "url": "https://www.ozon.ru/product/ulichnyy-svetilnik-nochnik-prozhektorna-pulte-na-solnechnoy-bataree-s-datchikom-dvizheniya-1977175785/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/7420875367.jpg",
-   "img_local": "img/b_spot660.webp"
+   "img_local": "img/b_spot660.webp",
+   "rating": 4.8,
+   "reviews": 137
   }
  ],
  "diy": [
@@ -49,7 +55,9 @@
    "note": "Хватает на один светодиод",
    "url": "https://www.ozon.ru/product/mini-solnechnaya-panel-6-v-1-vt-110-60-mm-polikristallicheskaya-dlya-diy-svetilnika-robota-i-1339298552/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/13750316743.jpg",
-   "img_local": "img/b_panel.webp"
+   "img_local": "img/b_panel.webp",
+   "rating": 4.7,
+   "reviews": 1455
   },
   {
    "key": "tp4056",
@@ -61,7 +69,9 @@
    "note": "Заряжает аккумулятор от панели и защищает от переразряда",
    "url": "https://www.ozon.ru/product/modul-zaryada-li-ion-akkumulyatorov-tp4056-s-zashchitoy-gnezdo-micro-usb-5v-1a-623144039/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-2/wc500/7365424106.jpg",
-   "img_local": "img/b_tp4056.webp"
+   "img_local": "img/b_tp4056.webp",
+   "rating": null,
+   "reviews": null
   },
   {
    "key": "cell",
@@ -73,7 +83,9 @@
    "note": "Ёмкость даёт запас примерно на 5–6 ночей работы одного светодиода",
    "url": "https://www.ozon.ru/product/akkumulyator-18650-ploskiy-pin-smartbuy-3-7-v-2200-mach-1-sht-1680923342/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-5/wc500/7656066041.jpg",
-   "img_local": "img/b_cell.webp"
+   "img_local": "img/b_cell.webp",
+   "rating": 4.9,
+   "reviews": 47137
   },
   {
    "key": "holder",
@@ -85,7 +97,9 @@
    "note": "Чтобы аккумулятор не пришлось припаивать",
    "url": "https://www.ozon.ru/product/derzhatel-18650-holder-batareynyy-otsek-18650-dlya-1sht-pod-payku-4100392561/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-l/wc500/10081206201.jpg",
-   "img_local": "img/b_holder.webp"
+   "img_local": "img/b_holder.webp",
+   "rating": 4.9,
+   "reviews": 63
   },
   {
    "key": "lightmod",
@@ -97,7 +111,9 @@
    "note": "Это и есть «включатель по темноте»: даёт сигнал, когда стемнело",
    "url": "https://www.ozon.ru/product/datchik-sveta-na-fotorezistore-porogovyy-4414515648/",
    "img": "https://ir.ozone.ru/s3/multimedia-y/wc500/6069495946.jpg",
-   "img_local": "img/b_lightmod.webp"
+   "img_local": "img/b_lightmod.webp",
+   "rating": 5.0,
+   "reviews": 2
   },
   {
    "key": "relay",
@@ -109,7 +125,9 @@
    "note": "Замыкает цепь светодиода по сигналу датчика",
    "url": "https://www.ozon.ru/product/modul-rele-5-volt-1-rele-arduin-3329408957/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-t/wc500/8701997105.jpg",
-   "img_local": "img/b_relay.webp"
+   "img_local": "img/b_relay.webp",
+   "rating": 5.0,
+   "reviews": 4
   },
   {
    "key": "usbled",
@@ -121,7 +139,9 @@
    "note": "Самый дешёвый готовый «светодиодик» с проводами",
    "url": "https://www.ozon.ru/product/kompaktnyy-svetodiodnyy-usb-svetilnik-dlya-noutbuka-3led-b41-teplyy-3-5v-belyy-3910049621/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-r/wc500/9376311951.jpg",
-   "img_local": "img/b_usbled.webp"
+   "img_local": "img/b_usbled.webp",
+   "rating": 4.7,
+   "reviews": 192
   },
   {
    "key": "wires",
@@ -133,7 +153,9 @@
    "note": "Без них модули не соединить — это и есть «без пайки»",
    "url": "https://www.ozon.ru/product/provod-soedinitelnyy-mama-mama-dupont-10-sm-40-sht-2805912312/",
    "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/7941361675.jpg",
-   "img_local": "img/b_wires.webp"
+   "img_local": "img/b_wires.webp",
+   "rating": 4.9,
+   "reviews": 666
   }
  ]
 }

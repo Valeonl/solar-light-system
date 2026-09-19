@@ -24,6 +24,8 @@
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
   .card-img{background:#fff;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
   .card-img img{width:100%;height:100%;object-fit:contain}
+  .rating{background:var(--panel2);color:#fbbf24;font-size:13px;padding:6px 12px;
+    border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
   .card-body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
   .role{display:inline-block;background:var(--panel2);border:1px solid var(--line2);color:var(--muted);
     font-size:12px;padding:2px 8px;border-radius:999px;align-self:flex-start}
@@ -49,9 +51,8 @@
   figure{margin:22px 0} figure svg{width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius)}
   figcaption{color:var(--muted);font-size:13.5px;margin-top:8px}
   code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13.5px}
-  pre{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:13.5px}
   footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
-  @media (max-width:600px){.wrap{padding:22px 14px 60px}table{font-size:13px}}
+  @media (max-width:600px){.wrap{padding:22px 14px 60px} table{font-size:13px}}
 </style>
 </head>
 <body>
@@ -62,189 +63,171 @@
 
 <h1>Bluetooth-дисплей на аккумуляторе: устройство, которому я смогу писать сам</h1>
 <p class="lead">Маленький экран с аккумулятором, который показывает всё, что ему пришлют по
-Bluetooth. Никакой пайки: либо одна плата со встроенным экраном, либо микроконтроллер и экран,
-соединённые четырьмя шлейфами. Дальше я или телефон пишем на него текст — и он появляется на экране.</p>
+Bluetooth. Собирается без пайки: микроконтроллер, экран и питание соединяются шлейфами и
+винтовыми клеммами. Дальше я или телефон пишем на него текст — и он появляется на экране.</p>
 
 <div class="kpis">
-  <div class="kpi"><b>736 ₽</b><span>вариант «одна плата»: ESP32 с экраном + аккумулятор</span></div>
-  <div class="kpi"><b>939 ₽</b><span>вариант «из модулей»: ESP32-C3 + OLED + аккумулятор</span></div>
+  <div class="kpi"><b>1 349 ₽</b><span>вся сборка: 8 позиций, доставка до 7 дней</span></div>
+  <div class="kpi"><b>★4.7–4.9</b><span>у всех товаров есть отзывы (168–4 165 штук)</span></div>
   <div class="kpi"><b>≈18 ч</b><span>работа от одного заряда (2000 мА·ч, ток ≈90 мА)</span></div>
-  <div class="kpi"><b>0</b><span>паяных соединений в обоих вариантах</span></div>
+  <div class="kpi"><b>0</b><span>паяных соединений</span></div>
 </div>
 
-<h2>Что это вообще такое</h2>
-<ol>
-  <li><b>ESP32</b> — микроконтроллер за 300–500 ₽, у которого на борту Wi-Fi, Bluetooth и память
-      под программу. Именно он умеет принимать текст по воздуху.</li>
-  <li><b>Экран</b> — либо встроенный в плату (вариант «одна плата»), либо отдельный OLED 0,96″,
-      который соединяется с платой четырьмя шлейфами.</li>
-  <li><b>Аккумулятор</b> — литиевый на 3,7 В с платой защиты и разъёмом; заряжается от USB.</li>
-  <li><b>Прошивка</b> — программа, которую надо один раз залить в плату по USB (файлы ниже уже готовы).
-      Она поднимает Bluetooth-сервис и выводит принятый текст на экран.</li>
-</ol>
-<div class="box ok">
-  <b>Как я буду на него писать.</b> Прошивка поднимает стандартный BLE-сервис «UART». Я отправляю
-  строку скриптом <code>send_text.py</code> (он лежит в файлах ниже) — устройство принимает её и
-  показывает. С телефона то же самое делает любой BLE-терминал, например «nRF Connect».
+<h2>Почему нет «одной платы со встроенным экраном»</h2>
+<div class="box warn">
+  <b>Эту ловушку стоит знать.</b> Дешёвые предложения «TTGO T-Display ESP32 с дисплеем 1,14″»
+  за 485 ₽ — это <b>не плата, а пластиковый корпус</b> под неё
+  (в названии спрятано «ABS Shell»). Настоящая плата с экраном, у которой есть отзывы, стоит
+  3 594 ₽ — вчетверо дороже всей сборки ниже. А комплект ESP32-S3
+  с дисплеем за 224 ₽ имеет оценку ★1.0 по одному отзыву. Поэтому собираем
+  из проверенных модулей.
 </div>
 
-<h2>Два варианта сборки</h2>
-<table>
-  <tr><th>Вариант</th><th>Что покупаешь</th><th>Итого</th><th>Сборка</th><th>Особенности</th></tr>
-  <tr>
-    <td><b>Одна плата</b><br><span class="good">рекомендую</span></td>
-    <td>TTGO T-Display (ESP32 + цветной экран 1,14″) и аккумулятор Li-Po 2000 мА·ч с разъёмом</td>
-    <td class="num">736 ₽<br><span class="note">с переходником 875 ₽</span></td>
-    <td>подключить аккумулятор в разъём</td>
-    <td>ничего соединять не надо, экран цветной, есть зарядка от USB-C; разъём батареи и платы
-        должен совпасть (JST 1.25 — проверяй при заказе)</td>
-  </tr>
-  <tr>
-    <td><b>Из модулей</b></td>
-    <td>ESP32-C3, OLED 0,96″, аккумулятор 18650 с холдером, плата зарядки, шлейфы</td>
-    <td class="num">939 ₽</td>
-    <td>4 шлейфа на экран + 2 провода питания</td>
-    <td>все детали приезжают быстрее и есть в наличии, но проводов больше; экран монохромный</td>
-  </tr>
-</table>
-
-<h3>Вариант 1: одна плата со встроенным экраном — 736 ₽</h3>
+<h2>Что покупать</h2>
 <div class="grid">
 
       <article class="card">
-        <div class="card-img"><img src="img/bt_tdisplay.webp" alt=""></div>
-        <div class="card-body">
-          <span class="role">Плата со экраном</span>
-          <h3>TTGO T-Display ESP32 Wi-Fi Bluetooth-совместимый модуль 1,14-дюймовый ЖК-ABS Shell</h3>
-          <p class="specs">ESP32 + цветной дисплей 1,14″ (135×240), разъём для аккумулятора, зарядка по USB-C</p>
-          <p class="note">Одна плата — и экран, и Bluetooth, и зарядка. Соединять нечего</p>
-          <div class="row"><span class="price">485 ₽</span>
-            <span class="days">доставка 5 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/ttgo-t-display-esp32-wi-fi-bluetooth-sovmestimyy-modul-1-14-dyuymovyy-zhk-abs-shell-3484708535/" target="_blank" rel="noopener">Открыть на Ozon</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="img/bt_lipo.webp" alt=""></div>
-        <div class="card-body">
-          <span class="role">Аккумулятор</span>
-          <h3>Аккумулятор (батарея) 103450, 3,7В, 2000 мАч, с платой защиты, разъем коннектора PH2.0 2 pin</h3>
-          <p class="specs">Li-Po 3,7 В, 2000 мА·ч, с платой защиты и разъёмом</p>
-          <p class="note">Важно: у платы разъём JST 1.25 — проверь, что у батареи такой же</p>
-          <div class="row"><span class="price">251 ₽</span>
-            <span class="days">доставка 3 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/akkumulyator-batareya-103450-3-7v-2000-mach-s-platoy-zashchity-razem-konnektora-ph2-0-2-pin-5692777979/" target="_blank" rel="noopener">Открыть на Ozon</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-img"><img src="img/bt_jst.webp" alt=""></div>
-        <div class="card-body">
-          <span class="role">Переходник (запасной)</span>
-          <h3>JST MX 1.25 мм 2pin кабель с разъемом 20см. / Разъем на плату JST MX 2pin / 1шт</h3>
-          <p class="specs">Кабель JST 1.25 мм 2 pin, 20 см, папа+мама</p>
-          <p class="note">Нужен, только если разъём аккумулятора не совпадёт с разъёмом платы</p>
-          <div class="row"><span class="price">139 ₽</span>
-            <span class="days">доставка 1 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/jst-mx-1-25-mm-2pin-kabel-s-razemom-20sm-razem-na-platu-jst-mx-2pin-1sht-4359428685/" target="_blank" rel="noopener">Открыть на Ozon</a>
-        </div>
-      </article>
-</div>
-<table>
-  <tr><th>Роль</th><th>Деталь</th><th>Цена</th><th>Доставка</th></tr>
-  <tr><td>Плата со экраном</td><td>TTGO T-Display ESP32 Wi-Fi Bluetooth-совместимый модуль 1,14-дюй</td><td class='num'>485 ₽</td><td class='num'>5 дн.</td></tr>
-<tr><td>Аккумулятор</td><td>Аккумулятор (батарея) 103450, 3,7В, 2000 мАч, с платой защиты, р</td><td class='num'>251 ₽</td><td class='num'>3 дн.</td></tr>
-<tr><td>Переходник (запасной)</td><td>JST MX 1.25 мм 2pin кабель с разъемом 20см. / Разъем на плату JS</td><td class='num'>139 ₽</td><td class='num'>1 дн.</td></tr>
-  <tr class="total"><td colspan="2">Итого</td><td class="num">875 ₽</td><td></td></tr>
-  <tr><td colspan="4" class="note" style="color:#94a3b8">Из них 139 ₽ — запасной переходник: нужен только если разъём аккумулятора не совпадёт с разъёмом платы. Без него набор стоит 736 ₽.</td></tr>
-</table>
-
-<h3>Вариант 2: из модулей — 939 ₽</h3>
-<div class="grid">
-
-      <article class="card">
-        <div class="card-img"><img src="img/bt_c3.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_c3.webp" alt=""></div>
+        <div class="rating">★4.9 · 286 отзывов</div>
         <div class="card-body">
           <span class="role">Микроконтроллер</span>
           <h3>Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для Arduino</h3>
-          <p class="specs">ESP32-C3: Wi-Fi + Bluetooth, питание от 3,7 В, размер с ноготь</p>
-          <p class="note">Питается прямо от литиевого аккумулятора — повышающий модуль не нужен</p>
-          <div class="row"><span class="price">326 ₽</span>
-            <span class="days">доставка 7 дн.</span></div>
+          <p class="specs">ESP32-C3: Wi-Fi + Bluetooth, питается от 3,7 В</p>
+          <p class="note">Сам по себе без ножек — вставляется в плату расширения ниже</p>
+          <div class="row"><span class="price">326 ₽</span><span class="days">доставка 7 дн.</span></div>
           <a class="btn" href="https://www.ozon.ru/product/plata-razrabotki-esp32-c3-supermini-wi-fi-bluetooth-dlya-arduino-1421896577/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
+
       <article class="card">
-        <div class="card-img"><img src="img/bt_oled.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_exp.webp" alt=""></div>
+        <div class="rating">★4.7 · 209 отзывов</div>
+        <div class="card-body">
+          <span class="role">Плата расширения</span>
+          <h3>Плата расширения для ESP32-C3 Super Mini</h3>
+          <p class="specs">Переходная плата: даёт нормальные разъёмы и винтовые клеммы для проводов</p>
+          <p class="note">Решает проблему «у ESP32 нет ножек»: плата вставляется в неё и всё становится подключаемым</p>
+          <div class="row"><span class="price">264 ₽</span><span class="days">доставка 1 дн.</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/plata-rasshireniya-dlya-esp32-c3-super-mini-1926407913/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/bt2_oled.webp" alt=""></div>
+        <div class="rating">★4.8 · 168 отзывов</div>
         <div class="card-body">
           <span class="role">Экран</span>
           <h3>OLED дисплей 0.96" 128x64 I2C голубые пиксели</h3>
-          <p class="specs">OLED 0,96″, 128×64, I2C, четыре контакта</p>
-          <p class="note">Соединяется с платой четырьмя шлейфами «мама-мама»</p>
-          <div class="row"><span class="price">249 ₽</span>
-            <span class="days">доставка 5 дн.</span></div>
+          <p class="specs">OLED 0,96″, 128×64, I2C, 4 вывода: VCC, GND, SDA, SCL</p>
+          <p class="note">У экрана ножки-«папа» — к ним подходят провода «папа-мама» стороной «мама»</p>
+          <div class="row"><span class="price">249 ₽</span><span class="days">доставка 5 дн.</span></div>
           <a class="btn" href="https://www.ozon.ru/product/oled-displey-0-96-128x64-i2c-golubye-pikseli-1996553359/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
+
       <article class="card">
-        <div class="card-img"><img src="img/bt_dupont.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_wires.webp" alt=""></div>
+        <div class="rating">★4.9 · 665 отзывов</div>
         <div class="card-body">
-          <span class="role">Шлейфы</span>
-          <h3>Соединительный провод Dupont 4 pin мама-мама 20 см, перемычка, шлейф</h3>
-          <p class="specs">Шлейф 4 провода «мама-мама», 20 см</p>
-          <p class="note">Питание и данные для экрана — вставляется руками</p>
-          <div class="row"><span class="price">97 ₽</span>
-            <span class="days">доставка 3 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/soedinitelnyy-provod-dupont-4-pin-mama-mama-20-sm-peremychka-shleyf-3701392508/" target="_blank" rel="noopener">Открыть на Ozon</a>
+          <span class="role">Провода</span>
+          <h3>Провод соединительный папа-мама "Dupont", 20 см, 40 шт</h3>
+          <p class="specs">40 проводов «папа-мама», 20 см</p>
+          <p class="note">Нужно 4 провода на экран (VCC, GND, SDA, SCL) и 2 на питание — в наборе 40, хватает с запасом</p>
+          <div class="row"><span class="price">124 ₽</span><span class="days">доставка 1 дн.</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/provod-soedinitelnyy-papa-mama-dupont-20-sm-40-sht-2805924549/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
+
       <article class="card">
-        <div class="card-img"><img src="img/bt_cell.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_cell.webp" alt=""></div>
+        <div class="rating">★4.8 · 4 165 отзывов</div>
         <div class="card-body">
           <span class="role">Аккумулятор</span>
           <h3>Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,выпуклый электрод, 1 ШТ</h3>
           <p class="specs">18650, 3,7 В, 2000 мА·ч</p>
-          <p class="note">Хватит примерно на сутки работы устройства</p>
-          <div class="row"><span class="price">117 ₽</span>
-            <span class="days">доставка 3 дн.</span></div>
+          <p class="note">Даёт около 18 часов работы</p>
+          <div class="row"><span class="price">117 ₽</span><span class="days">доставка 3 дн.</span></div>
           <a class="btn" href="https://www.ozon.ru/product/akkumulyatornaya-batareyka-18650-2000-mach-li-ion-3-7-v-vypuklyy-elektrod-1-sht-3936156676/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
+
       <article class="card">
-        <div class="card-img"><img src="img/bt_holder.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_holder.webp" alt=""></div>
+        <div class="rating">★4.9 · 784 отзыва</div>
         <div class="card-body">
-          <span class="role">Холдер</span>
+          <span class="role">Батарейный отсек</span>
           <h3>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с проводами к Arduino/Слот батарейки для ардуино</h3>
-          <p class="specs">Отсек под 18650 с готовыми проводами</p>
-          <p class="note">Аккумулятор держится в отсеке, паять не нужно</p>
-          <div class="row"><span class="price">86 ₽</span>
-            <span class="days">доставка 1 дн.</span></div>
+          <p class="specs">Отсек под 18650 с уже прикрученными проводами</p>
+          <p class="note">Провода отсека идут в плату зарядки; паять не нужно, жилы зажимаются винтами</p>
+          <div class="row"><span class="price">86 ₽</span><span class="days">доставка 1 дн.</span></div>
           <a class="btn" href="https://www.ozon.ru/product/batareynyy-otsek-1h-dlya-akkumulyatorov-li-ion-18650-s-provodami-k-arduino-slot-batareyki-2708696421/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
+
       <article class="card">
-        <div class="card-img"><img src="img/bt_tp4056.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt2_tp4056.webp" alt=""></div>
+        <div class="rating">★4.9 · 1 176 отзывов</div>
         <div class="card-body">
           <span class="role">Плата зарядки</span>
           <h3>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устройство для Li-lon аккумуляторов.</h3>
-          <p class="specs">TP4056: зарядка по USB-C и защита от переразряда</p>
-          <p class="note">Чтобы заряжать устройство от телефона или ноутбука</p>
-          <div class="row"><span class="price">64 ₽</span>
-            <span class="days">доставка 1 дн.</span></div>
+          <p class="specs">TP4056: зарядка по USB-C, защита от переразряда</p>
+          <p class="note">Между отсеком и платой расширения: отсек → B+/B−, выход → 5V платы</p>
+          <div class="row"><span class="price">64 ₽</span><span class="days">доставка 1 дн.</span></div>
           <a class="btn" href="https://www.ozon.ru/product/modul-zaryadki-tp4056-usb-type-c-s-zashchitoy-zaryadnoe-ustroystvo-dlya-li-lon-akkumulyatorov-5518679496/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
-</div>
-<table>
-  <tr><th>Роль</th><th>Деталь</th><th>Цена</th><th>Доставка</th></tr>
-  <tr><td>Микроконтроллер</td><td>Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для Arduino</td><td class='num'>326 ₽</td><td class='num'>7 дн.</td></tr>
-<tr><td>Экран</td><td>OLED дисплей 0.96" 128x64 I2C голубые пиксели</td><td class='num'>249 ₽</td><td class='num'>5 дн.</td></tr>
-<tr><td>Шлейфы</td><td>Соединительный провод Dupont 4 pin мама-мама 20 см, перемычка, ш</td><td class='num'>97 ₽</td><td class='num'>3 дн.</td></tr>
-<tr><td>Аккумулятор</td><td>Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,выпуклый эл</td><td class='num'>117 ₽</td><td class='num'>3 дн.</td></tr>
-<tr><td>Холдер</td><td>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с проводами к</td><td class='num'>86 ₽</td><td class='num'>1 дн.</td></tr>
-<tr><td>Плата зарядки</td><td>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устройство д</td><td class='num'>64 ₽</td><td class='num'>1 дн.</td></tr>
-  <tr class="total"><td colspan="2">Итого</td><td class="num">939 ₽</td><td></td></tr>
-</table>
 
-<h2>Схема подключения (для варианта 2)</h2>
+      <article class="card">
+        <div class="card-img"><img src="img/bt2_term.webp" alt=""></div>
+        <div class="rating">★4.9 · 863 отзыва</div>
+        <div class="card-body">
+          <span class="role">Клеммная колодка</span>
+          <h3>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В</h3>
+          <p class="specs">Винтовая колодка на 8 контактов</p>
+          <p class="note">Чтобы соединить провода отсека с отверстиями платы зарядки без пайки: жилы с двух сторон зажимаются винтами</p>
+          <div class="row"><span class="price">119 ₽</span><span class="days">доставка 1 дн.</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/klemmnaya-kolodka-vintovaya-s-kryshkoy-8-kontaktov-15-a-600-v-3245596810/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+</div>
+
+<h3>Смета</h3>
+<table>
+  <tr><th>Роль</th><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Итого</th><th>Доставка</th><th>Отзывы</th></tr>
+  <tr><td>Микроконтроллер</td><td>Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для </td><td class='num'>326 ₽</td><td class='num'>1 шт</td><td class='num'>326 ₽</td><td class='num'>7 дн.</td><td class='num'>★4.9 · 286</td></tr>
+<tr><td>Плата расширения</td><td>Плата расширения для ESP32-C3 Super Mini</td><td class='num'>264 ₽</td><td class='num'>1 шт</td><td class='num'>264 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.7 · 209</td></tr>
+<tr><td>Экран</td><td>OLED дисплей 0.96" 128x64 I2C голубые пиксели</td><td class='num'>249 ₽</td><td class='num'>1 шт</td><td class='num'>249 ₽</td><td class='num'>5 дн.</td><td class='num'>★4.8 · 168</td></tr>
+<tr><td>Провода</td><td>Провод соединительный папа-мама "Dupont", 20 см, 40 шт</td><td class='num'>124 ₽</td><td class='num'>1 шт</td><td class='num'>124 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 665</td></tr>
+<tr><td>Аккумулятор</td><td>Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,вып</td><td class='num'>117 ₽</td><td class='num'>1 шт</td><td class='num'>117 ₽</td><td class='num'>3 дн.</td><td class='num'>★4.8 · 4 165</td></tr>
+<tr><td>Батарейный отсек</td><td>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с про</td><td class='num'>86 ₽</td><td class='num'>1 шт</td><td class='num'>86 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 784</td></tr>
+<tr><td>Плата зарядки</td><td>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устр</td><td class='num'>64 ₽</td><td class='num'>1 шт</td><td class='num'>64 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 1 176</td></tr>
+<tr><td>Клеммная колодка</td><td>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, </td><td class='num'>119 ₽</td><td class='num'>1 шт</td><td class='num'>119 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 863</td></tr>
+  <tr class="total"><td colspan="4">Всего</td><td class="num">1 349 ₽</td><td></td><td></td></tr>
+</table>
+<p>Количества указаны явно: в наборе проводов 40 штук, а нужно 6 — одного набора хватит с запасом;
+остальные позиции берутся по одной.</p>
+
+<h2>Как это соединяется (у платы нет ножек)</h2>
+<table>
+  <tr><th>Что с чем</th><th>Чем соединяется</th><th>Куда именно</th></tr>
+  <tr><td>ESP32-C3 → плата расширения</td><td>вставляется в разъёмы расширения</td>
+      <td>своих ножек у микроплаты нет вообще, поэтому без переходной платы подключить нечего</td></tr>
+  <tr><td>Экран → плата расширения</td><td>4 провода <b>«папа-мама»</b></td>
+      <td>у экрана ножки-«папа», поэтому со стороны экрана нужна «мама», а в разъёмы платы
+          идёт «папа»: VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9</td></tr>
+  <tr><td>Батарейный отсек → плата зарядки</td><td>винтовая клеммная колодка</td>
+      <td>провода отсека и ответные провода зажимаются винтами: плюс → B+, минус → B−</td></tr>
+  <tr><td>Плата зарядки → плата расширения</td><td>2 провода «папа-мама»</td>
+      <td>OUT+ → 5V, OUT− → GND платы расширения</td></tr>
+</table>
+<div class="box">
+  <b>Почему «папа-мама», а не «мама-мама».</b> Шлейф «мама-мама» подходит, только если у обеих
+  сторон есть ножки. У ESP32-C3 их нет совсем, у платы зарядки — только отверстия под пайку.
+  Поэтому берём «папа-мама»: он садится и на ножки экрана, и в разъёмы расширения, а голые
+  провода отсека соединяются через винтовую колодку.
+</div>
+
+<h2>Схема</h2>
 <figure>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 540" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="Схема: аккумулятор, плата зарядки, ESP32-C3, OLED-дисплей и Bluetooth-подключение">
   <defs>
@@ -298,8 +281,8 @@ Bluetooth. Никакой пайки: либо одна плата со встр
     <rect x="568" y="104" width="180" height="152" rx="10" class="box"/>
     <text x="658" y="132" text-anchor="middle" class="lbl">ESP32-C3</text>
     <text x="658" y="152" text-anchor="middle" class="sub">Wi-Fi + Bluetooth</text>
-    <text x="658" y="170" text-anchor="middle" class="sub">плата Super Mini</text>
-    <text x="580" y="196" class="tname">5V</text>
+    <text x="658" y="170" text-anchor="middle" class="sub">в плате расширения</text>
+    <text x="580" y="196" class="tname">5V (от зарядки)</text>
     <rect x="568" y="200" width="52" height="18" rx="4" class="term"/>
     <text x="580" y="234" class="tname">GND</text>
     <rect x="568" y="238" width="52" height="18" rx="4" class="term"/>
@@ -327,14 +310,14 @@ Bluetooth. Никакой пайки: либо одна плата со встр
   <!-- провода -->
   <path class="wp" d="M74 226 C 74 262, 190 262, 296 208" marker-end="url(#a2)"/>
   <path class="wn" d="M174 226 C 190 292, 250 292, 330 214" marker-end="url(#a2)"/>
-  <text x="120" y="106" class="note">аккумулятор → плата зарядки</text>
+  <text x="96" y="106" class="note">через винтовую колодку → B+/B−</text>
 
   <path class="wp" d="M318 256 C 430 312, 520 250, 586 212" marker-end="url(#a2)"/>
   <path class="wn" d="M352 256 C 460 336, 540 288, 586 248" marker-end="url(#a2)"/>
   <text x="398" y="330" class="note">выход зарядки → 5V и GND платы</text>
 
   <path class="wd" d="M658 256 C 658 290, 658 300, 658 330" marker-end="url(#a2)"/>
-  <text x="656" y="300" class="note" fill="#38bdf8">4 провода: 3V3, GND, GPIO8, GPIO9</text>
+  <text x="612" y="300" class="note" fill="#38bdf8">4 провода «папа-мама»: 3V3, GND, GPIO8, GPIO9</text>
 
   <path class="wd" d="M748 180 C 780 180, 780 180, 792 180" marker-end="url(#a2)"/>
   <text x="806" y="92" class="note" fill="#38bdf8">Bluetooth (BLE)</text>
@@ -351,68 +334,69 @@ Bluetooth. Никакой пайки: либо одна плата со встр
   <text x="660" y="528" class="sub">соединять нечего, только вставить аккумулятор в разъём.</text>
 </svg>
 
-  <figcaption>Питание: аккумулятор → плата зарядки → вход 5 В платы. Экран: четыре провода,
-  VCC и GND на 3,3 В и землю, SDA на GPIO8, SCL на GPIO9.</figcaption>
+  <figcaption>Питание: отсек → плата зарядки → плата расширения. Экран: четыре провода «папа-мама».</figcaption>
 </figure>
-<p>В варианте 1 схема не нужна вовсе: аккумулятор вставляется в разъём на плате, экран уже распаян
-производителем. Это и главный аргумент в его пользу.</p>
 
 <h2>Расчёт автономности</h2>
 <table>
   <tr><th>Что</th><th>Значение</th><th>Пояснение</th></tr>
-  <tr><td>Ток устройства</td><td class="num">90 мА</td>
-      <td>ESP32 с включённым Bluetooth и работающим экраном</td></tr>
-  <tr><td>Ёмкость аккумулятора</td><td class="num">2000 мА·ч</td>
-      <td>типичный Li-Po 2000 мА·ч или элемент 18650</td></tr>
-  <tr><td>Время работы</td><td class="num">≈18 ч</td>
-      <td>2000 ÷ 90 с поправкой на 80% полезной ёмкости</td></tr>
-  <tr class="total"><td>Вывод</td><td colspan="2">сутки с небольшим на одном заряде; если нужна неделя —
-      либо яркость экрана вниз и режим сна между сообщениями, либо аккумулятор побольше (я допишу
-      прошивку под сон, когда железо будет на руках)</td></tr>
+  <tr><td>Ток устройства</td><td class="num">90 мА</td><td>ESP32 с включённым Bluetooth и работающим экраном</td></tr>
+  <tr><td>Ёмкость аккумулятора</td><td class="num">2000 мА·ч</td><td>элемент 18650 на 2000 мА·ч</td></tr>
+  <tr><td>Время работы</td><td class="num">≈18 ч</td><td>2000 ÷ 90 с поправкой на 80% полезной ёмкости</td></tr>
 </table>
 
-<h2>Сборка и запуск — по шагам</h2>
+<h2>Как залить прошивку</h2>
+<p>По Bluetooth или Wi-Fi прошивка <b>не заливается</b> — у ESP32 так не бывает. Порядок такой:</p>
 <ol class="steps">
-  <li><b>Закажи детали</b> из выбранного варианта. Все позиции — с доставкой до 7 дней.</li>
-  <li><b>Соедини питание.</b> Вариант 1: аккумулятор в разъём на плате. Вариант 2: аккумулятор
-      в холдер → провода холдера → вход платы зарядки → выход платы зарядки на пин 5V платы ESP32.
-      Плюс с плюсом, минус с минусом — здесь полярность важнее всего.</li>
-  <li><b>Подключи экран</b> (только вариант 2): VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9.
-      Если экран не завёлся — поменяй SDA и SCL местами: у разных плат они переставлены.</li>
-  <li><b>Подключи плату к компьютеру по USB</b> и залей прошивку — файл <code>t_display_firmware.ino</code>
-      (вариант 1) или <code>c3_oled_firmware.ino</code> (вариант 2). В Arduino IDE нужно доустановить
-      библиотеки: TFT_eSPI и NimBLE-Arduino для первого варианта, Adafruit SSD1306 и NimBLE-Arduino
-      для второго. Инструкция — в комментариях внутри файла.</li>
-  <li><b>Проверь, что устройство видно по Bluetooth:</b> оно поднимется как <code>Hermes-Display</code>.</li>
-  <li><b>Отправь первый текст</b> с компьютера:
-      <code>python send_text.py "Привет, дисплей!"</code> — на экране появится строка.
-      С телефона — любым BLE-терминалом, тот же текст в характеристику RX.</li>
+  <li><b>Первая заливка — только по USB.</b> Плата подключается кабелем к компьютеру, в Arduino IDE
+      ставится ядро esp32 и библиотеки (NimBLE-Arduino, Adafruit SSD1306, Adafruit GFX), выбирается
+      плата «ESP32C3 Dev Module» и нажимается «Загрузить». Внутри файла прошивки это расписано по шагам.
+      На Windows может понадобиться драйвер USB-COM (CH340) — обычная заминка первого запуска.</li>
+  <li><b>Дальше можно по Wi-Fi.</b> Если добавить в прошивку режим OTA (обновление по воздуху),
+      следующие версии будут заливаться по Wi-Fi без кабеля. Скажи — добавлю, когда плата будет на руках.</li>
+  <li><b>Bluetooth — только для данных.</b> По нему устройство принимает текст для показа
+      (сервис <code>Hermes-Display</code>), но не прошивку.</li>
 </ol>
+
+<h2>Порядок сборки</h2>
+<ol class="steps">
+  <li>Вставь аккумулятор в батарейный отсек.</li>
+  <li>Соедини отсек с платой зарядки через винтовую колодку: плюс → B+, минус → B−.
+      Полярность проверь дважды — перепутанная портит плату.</li>
+  <li>Выход зарядки (OUT+ и OUT−) двумя проводами «папа-мама» подключи к 5V и GND платы расширения.</li>
+  <li>Вставь ESP32-C3 в плату расширения.</li>
+  <li>Четырьмя проводами «папа-мама» подключи экран: VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9.
+      Если экран молчит — поменяй местами SDA и SCL.</li>
+  <li>Подключи плату к компьютеру по USB и залей прошивку
+      (<a href="files/bt_display/c3_oled_firmware.ino">c3_oled_firmware.ino</a>).</li>
+  <li>Проверь, что устройство видно как <code>Hermes-Display</code>, и отправь первый текст:
+      <code>python send_text.py "Привет, дисплей!"</code>
+      (<a href="files/bt_display/send_text.py">send_text.py</a>).</li>
+</ol>
+
 <div class="box">
-  <b>Файлы для этого устройства</b> (лежат в репозитории рядом со страницей):<br>
-  <a href="files/bt_display/t_display_firmware.ino">t_display_firmware.ino</a> — прошивка для варианта 1<br>
-  <a href="files/bt_display/c3_oled_firmware.ino">c3_oled_firmware.ino</a> — прошивка для варианта 2<br>
-  <a href="files/bt_display/send_text.py">send_text.py</a> — скрипт отправки текста (Python, библиотека bleak)
+  <b>Файлы проекта:</b><br>
+  <a href="files/bt_display/c3_oled_firmware.ino">c3_oled_firmware.ino</a> — прошивка под ESP32-C3 и OLED<br>
+  <a href="files/bt_display/t_display_firmware.ino">t_display_firmware.ino</a> — вторая прошивка, если
+  когда-нибудь появится плата со встроенным экраном<br>
+  <a href="files/bt_display/send_text.py">send_text.py</a> — скрипт отправки текста (Python, bleak)
 </div>
 
 <h2>Честно о рисках</h2>
 <ul>
-  <li><b>Первая прошивка требует компьютера с USB.</b> Без этого шага устройство не заработает —
-      готового «купил и пишет» здесь нет, и это цена дешевизны.</li>
-  <li><b>Код написан, но на живом железе ещё не проверен.</b> Скажи, когда детали приедут, — я
-      подключу плату по USB, залью прошивку, поправлю то, что не сойдётся, и покажу, как пишу на экран.</li>
-  <li><b>Разъёмы батарей различаются.</b> У платы T-Display разъём JST 1.25 мм, у многих аккумуляторов —
-      PH 2.0. Это самая частая заминка: проверяй тип разъёма при заказе, иначе понадобится переходник.</li>
-  <li><b>Bluetooth только в упор.</b> BLE держит связь на 5–10 м в комнате; для дальности нужна
-      другая антенна и другой бюджет.</li>
-  <li><b>Яркость и ток.</b> Подсветка экрана — основная нагрузка: если нужна неделя автономности,
-      яркость снижаем, а между сообщениями плату усыпляем.</li>
+  <li><b>Стоимость — 1 349 ₽</b>, а не меньше: это цена правильных разъёмов и товаров
+      с отзывами. Убрать клеммную колодку нельзя — без неё голые провода отсека соединять нечем.</li>
+  <li><b>Код написан, но на живом железе не проверен</b> — платы пока нет. Скажи, когда приедет, —
+      зальём прошивку и поправим то, что не сойдётся.</li>
+  <li><b>Первая прошивка требует компьютера</b> с USB и драйвером USB-COM.</li>
+  <li><b>Bluetooth работает в упор</b> — 5–10 м в комнате.</li>
 </ul>
 
 <footer>
-  Цены и наличие — Ozon, 19.09.2026, фильтр «доставка до 7 дней». Фотографии товаров принадлежат
-  продавцам на Ozon и приведены со ссылками на страницы товаров. Прошивки и скрипт написаны под эти
-  платы; проверка на живом модуле — после покупки, вместе с владельцем.
+  Цены, наличие и отзывы — Ozon, 19.09.2026, фильтр «доставка до 7 дней». Товары без отзывов
+  или с плохими оценками в список не включались. Фотографии принадлежат продавцам Ozon и приведены
+  со ссылками на страницы товаров. Прошивки написаны под эти платы; проверка на живом модуле —
+  после покупки.
 </footer>
 
 </div>

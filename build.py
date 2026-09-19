@@ -70,6 +70,15 @@ C = calc()
 TOTAL = sum(i["price"] for i in ITEMS)
 
 
+def rating_html(i: dict) -> str:
+    """Строка отзывов под картинкой: «★4.9 · 286 отзывов»."""
+    r, n = i.get("rating"), i.get("reviews")
+    if not r or not n:
+        return ""
+    word = "отзыв" if n % 10 == 1 and n % 100 != 11 else ("отзыва" if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14 else "отзывов")
+    return f'<div class="rating">★{r:.1f} · {n:,}'.replace(",", "\u00a0") + f' {word}</div>'
+
+
 def money(n: int) -> str:
     """Русский формат: 3368 → «3 368»."""
     return f"{n:,}".replace(",", "\u00a0")
@@ -80,6 +89,7 @@ def item_card(i: dict) -> str:
     return f"""
       <article class="card">
         <div class="card-img"><img src="{img}" alt="{html.escape(i['title'][:80])}"></div>
+        {rating_html(i)}
         <div class="card-body">
           <span class="role">{html.escape(i['role'])}</span>
           <h3>{html.escape(i['title'])}</h3>

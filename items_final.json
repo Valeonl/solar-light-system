@@ -10,7 +10,9 @@
   "note": "Склад Ozon в Ленинградской области — приезжает на следующий день",
   "url": "https://www.ozon.ru/product/solnechnaya-panel-moshchnostyu-30-vt-12-v-generator-na-perezaryazhaemyh-batareyah-s-kontrollerom-3644364757/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-9/wc500/10018825929.jpg",
-  "img_local": "img/panel.webp"
+  "img_local": "img/panel.webp",
+  "rating": 4.6,
+  "reviews": 1174
  },
  {
   "key": "battery",
@@ -23,7 +25,9 @@
   "note": "Основа системы. Позже можно добавить такой же второй — они соединяются параллельно",
   "url": "https://www.ozon.ru/product/akkumulyator-dlya-opryskivatelya-12v-7ach-5413536418/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-m/wc500/13686521890.jpg",
-  "img_local": "img/battery.webp"
+  "img_local": "img/battery.webp",
+  "rating": 5.0,
+  "reviews": 27
  },
  {
   "key": "fotorele",
@@ -36,7 +40,9 @@
   "note": "Тот самый «включатель, когда уходит солнце»: реагирует на освещённость, а не на время",
   "url": "https://www.ozon.ru/product/regulyator-osveshcheniya-fr-08-fotorele-12-v-10-a-2120587493/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-t/wc500/7936577741.jpg",
-  "img_local": "img/fotorele.webp"
+  "img_local": "img/fotorele.webp",
+  "rating": 4.8,
+  "reviews": 55
  },
  {
   "key": "lamp",
@@ -49,7 +55,9 @@
   "note": "Низковольтная — рассчитана на 12–48 В, обычная 220-вольтовая не подойдёт",
   "url": "https://www.ozon.ru/product/lampochka-svetodiodnaya-nizkovoltnaya-12-volt-5-vatt-tsokol-e27-4000k-365817852/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-m/wc500/7456148626.jpg",
-  "img_local": "img/lamp.webp"
+  "img_local": "img/lamp.webp",
+  "rating": 4.8,
+  "reviews": 3424
  },
  {
   "key": "socket",
@@ -62,7 +70,9 @@
   "note": "Сам патрон уже с колодкой — паять нечего, провода зажимаются винтами",
   "url": "https://www.ozon.ru/product/rexant-patron-e27-podvesnoy-s-klemmnoy-kolodkoy-773993397/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-6/wc500/8011811202.jpg",
-  "img_local": "img/socket.webp"
+  "img_local": "img/socket.webp",
+  "rating": 5.0,
+  "reviews": 326
  },
  {
   "key": "kolodka",
@@ -75,7 +85,9 @@
   "note": "Соединять провода: вставил жилу — затянул винт",
   "url": "https://www.ozon.ru/product/klemmnaya-kolodka-vintovaya-s-kryshkoy-8-kontaktov-15-a-600-v-3245596810/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-q/wc500/8868703490.jpg",
-  "img_local": "img/kolodka.webp"
+  "img_local": "img/kolodka.webp",
+  "rating": 4.9,
+  "reviews": 863
  },
  {
   "key": "holder",
@@ -88,7 +100,9 @@
   "note": "В комплекте уже идёт предохранитель 10 А — докупать отдельно не нужно",
   "url": "https://www.ozon.ru/product/derzhatel-predohranitelya-razem-flazhkovyy-s-predohranitelem-10a-1-sht-2230119633/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-5/wc500/8458216493.jpg",
-  "img_local": "img/holder.webp"
+  "img_local": "img/holder.webp",
+  "rating": 4.8,
+  "reviews": 2701
  },
  {
   "key": "fuses",
@@ -101,7 +115,9 @@
   "note": "Запасные: возьми 5 А или 7,5 А для панели 30 Вт",
   "url": "https://www.ozon.ru/product/nabor-predohraniteley-flazhkovyh-dlya-avtomobilya-10sht-7-5-30-a-4896138827/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-g/wc500/13998796792.jpg",
-  "img_local": "img/fuses.webp"
+  "img_local": "img/fuses.webp",
+  "rating": 4.9,
+  "reviews": 2785
  },
  {
   "key": "crocodile",
@@ -114,7 +130,9 @@
   "note": "Зацепить провода за клеммы аккумулятора без инструмента",
   "url": "https://www.ozon.ru/product/zazhim-krokodil-30-a-dlina-70-mm-komplekt-2-sht-zazhimy-krokodily-dlya-provodov-786086801/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-3/wc500/11129382651.jpg",
-  "img_local": "img/crocodile.webp"
+  "img_local": "img/crocodile.webp",
+  "rating": 4.9,
+  "reviews": 27703
  },
  {
   "key": "wire_b",
@@ -127,7 +145,9 @@
   "note": "Медный многожильный, 1,5 мм² хватает с запасом",
   "url": "https://www.ozon.ru/product/provod-pugv-1-5-siniy-mednyy-mnogozhilnyy-3m-4998179474/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-x/wc500/12312833613.jpg",
-  "img_local": "img/wire_b.webp"
+  "img_local": "img/wire_b.webp",
+  "rating": 3.0,
+  "reviews": 2
  },
  {
   "key": "wire_w",
@@ -140,6 +160,8 @@
   "note": "Второй провод линии",
   "url": "https://www.ozon.ru/product/provod-pugv-1-5-belyy-mednyy-mnogozhilnyy-3m-4998160469/",
   "img": "https://ir.ozone.ru/s3/multimedia-1-a/wc500/12313011646.jpg",
-  "img_local": "img/wire_w.webp"
+  "img_local": "img/wire_w.webp",
+  "rating": 4.0,
+  "reviews": 1
  }
 ]
