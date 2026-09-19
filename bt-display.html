@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bluetooth-дисплей на аккумуляторе своими руками — без пайки</title>
+<title>Bluetooth-дисплей на аккумуляторе своими руками — сборка почти без пайки</title>
 <style>
   :root{--bg:#0b1220;--panel:#111827;--panel2:#0f172a;--line:#1f2937;--line2:#334155;
     --fg:#e5e7eb;--muted:#94a3b8;--accent:#38bdf8;--good:#22c55e;--bad:#ef4444;--radius:14px}
@@ -63,14 +63,15 @@
 
 <h1>Bluetooth-дисплей на аккумуляторе: устройство, которому я смогу писать сам</h1>
 <p class="lead">Маленький экран с аккумулятором, который показывает всё, что ему пришлют по
-Bluetooth. Собирается без пайки: микроконтроллер, экран и питание соединяются шлейфами и
-винтовыми клеммами. Дальше я или телефон пишем на него текст — и он появляется на экране.</p>
+Bluetooth. Собирается почти без пайки: у экрана ножки уже распаяны продавцом, провода вставляются в
+беспаечную макетную плату, питание зажимается винтовой колодкой. Единственная пайка — две планки
+ножек на самом микроконтроллере (5 минут). Дальше я или телефон пишем на него текст — и он появляется на экране.</p>
 
 <div class="kpis">
-  <div class="kpi"><b>1 349 ₽</b><span>вся сборка: 8 позиций, доставка до 7 дней</span></div>
-  <div class="kpi"><b>★4.7–4.9</b><span>у всех товаров есть отзывы (168–4 165 штук)</span></div>
+  <div class="kpi"><b>1 483 ₽</b><span>вся сборка: 8 позиций, у всех доставка «завтра»</span></div>
+  <div class="kpi"><b>★4.9</b><span>у всех товаров есть отзывы (82–22 604 штуки)</span></div>
   <div class="kpi"><b>≈18 ч</b><span>работа от одного заряда (2000 мА·ч, ток ≈90 мА)</span></div>
-  <div class="kpi"><b>0</b><span>паяных соединений</span></div>
+  <div class="kpi"><b>1</b><span>пайка за всю сборку — две планки ножек на плате</span></div>
 </div>
 
 <h2>Почему нет «одной платы со встроенным экраном»</h2>
@@ -87,105 +88,105 @@ Bluetooth. Собирается без пайки: микроконтролле�
 <div class="grid">
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_c3.webp" alt=""></div>
-        <div class="rating">★4.9 · 286 отзывов</div>
+        <div class="card-img"><img src="img/bt3_esp.jpg" alt=""></div>
+        <div class="rating">★4.9 · 82 отзыва</div>
         <div class="card-body">
           <span class="role">Микроконтроллер</span>
-          <h3>Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для Arduino</h3>
-          <p class="specs">ESP32-C3: Wi-Fi + Bluetooth, питается от 3,7 В</p>
-          <p class="note">Сам по себе без ножек — вставляется в плату расширения ниже</p>
-          <div class="row"><span class="price">326 ₽</span><span class="days">доставка 7 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/plata-razrabotki-esp32-c3-supermini-wi-fi-bluetooth-dlya-arduino-1421896577/" target="_blank" rel="noopener">Открыть на Ozon</a>
+          <h3>ESP32-C3 Super Mini Отладочная плата на базе микроконтроллера ESP32-C3, type-C</h3>
+          <p class="specs">ESP32-C3: Wi-Fi + Bluetooth, питание 3,7–5 В</p>
+          <p class="note">Гребёнки ножек идут в комплекте и НЕ распаяны — это единственная пайка в сборке (2 планки, ~5 минут)</p>
+          <div class="row"><span class="price">446 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/esp32-c3-super-mini-otladochnaya-plata-na-baze-mikrokontrollera-esp32-c3-type-c-3468709710/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_exp.webp" alt=""></div>
-        <div class="rating">★4.7 · 209 отзывов</div>
-        <div class="card-body">
-          <span class="role">Плата расширения</span>
-          <h3>Плата расширения для ESP32-C3 Super Mini</h3>
-          <p class="specs">Переходная плата: даёт нормальные разъёмы и винтовые клеммы для проводов</p>
-          <p class="note">Решает проблему «у ESP32 нет ножек»: плата вставляется в неё и всё становится подключаемым</p>
-          <div class="row"><span class="price">264 ₽</span><span class="days">доставка 1 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/plata-rasshireniya-dlya-esp32-c3-super-mini-1926407913/" target="_blank" rel="noopener">Открыть на Ozon</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-img"><img src="img/bt2_oled.webp" alt=""></div>
-        <div class="rating">★4.8 · 168 отзывов</div>
+        <div class="card-img"><img src="img/bt3_oled.jpg" alt=""></div>
+        <div class="rating">★4.9 · 1 350 отзывов</div>
         <div class="card-body">
           <span class="role">Экран</span>
-          <h3>OLED дисплей 0.96" 128x64 I2C голубые пиксели</h3>
-          <p class="specs">OLED 0,96″, 128×64, I2C, 4 вывода: VCC, GND, SDA, SCL</p>
-          <p class="note">У экрана ножки-«папа» — к ним подходят провода «папа-мама» стороной «мама»</p>
-          <div class="row"><span class="price">249 ₽</span><span class="days">доставка 5 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/oled-displey-0-96-128x64-i2c-golubye-pikseli-1996553359/" target="_blank" rel="noopener">Открыть на Ozon</a>
+          <h3>OLED дисплей 0.96" 128x64, I2C, Белый</h3>
+          <p class="specs">OLED 0,96″, 128×64, I2C, 4 вывода</p>
+          <p class="note">Ножки уже распаяны продавцом (проверено по фото) — вставляются в макетную плату</p>
+          <div class="row"><span class="price">271 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/oled-displey-0-96-128x64-i2c-belyy-2719493104/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_wires.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt3_brd.jpg" alt=""></div>
+        <div class="rating">★4.9 · 831 отзыв</div>
+        <div class="card-body">
+          <span class="role">Основа для соединений</span>
+          <h3>Беспаечная макетная плата Arduino 400 точек (BREADBOARD) для конструирования робототехники</h3>
+          <p class="specs">беспаечная макетная плата, 400 точек</p>
+          <p class="note">Держит плату, экран и провода: соединения не болтаются, паять не нужно</p>
+          <div class="row"><span class="price">175 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/bespaechnaya-maketnaya-plata-arduino-400-tochek-breadboard-dlya-konstruirovaniya-robototehniki-5539568992/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/bt3_wr.jpg" alt=""></div>
         <div class="rating">★4.9 · 665 отзывов</div>
         <div class="card-body">
           <span class="role">Провода</span>
-          <h3>Провод соединительный папа-мама "Dupont", 20 см, 40 шт</h3>
-          <p class="specs">40 проводов «папа-мама», 20 см</p>
-          <p class="note">Нужно 4 провода на экран (VCC, GND, SDA, SCL) и 2 на питание — в наборе 40, хватает с запасом</p>
-          <div class="row"><span class="price">124 ₽</span><span class="days">доставка 1 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/provod-soedinitelnyy-papa-mama-dupont-20-sm-40-sht-2805924549/" target="_blank" rel="noopener">Открыть на Ozon</a>
+          <h3>Провод соединительный мама-мама "Dupont", 10 см, 40 шт</h3>
+          <p class="specs">Dupont «мама-мама», 10 см, 40 штук</p>
+          <p class="note">Нужно 6 штук (4 на экран, 2 на питание) — набора хватает с большим запасом</p>
+          <div class="row"><span class="price">124 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/provod-soedinitelnyy-mama-mama-dupont-10-sm-40-sht-2805912312/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_cell.webp" alt=""></div>
-        <div class="rating">★4.8 · 4 165 отзывов</div>
+        <div class="card-img"><img src="img/bt3_hold.jpg" alt=""></div>
+        <div class="rating">★4.9 · 22 604 отзыва</div>
+        <div class="card-body">
+          <span class="role">Отсек для аккумулятора</span>
+          <h3>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с проводами к Arduino/Слот батарейки для ардуино</h3>
+          <p class="specs">отсек 1×18650, провода уже припаяны продавцом</p>
+          <p class="note">Провода отсека зажимаются винтами клеммной колодки — паять не надо</p>
+          <div class="row"><span class="price">62 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/batareynyy-otsek-1h-dlya-akkumulyatorov-li-ion-18650-s-provodami-k-arduino-slot-batareyki-1534066210/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/bt3_cell.jpg" alt=""></div>
+        <div class="rating">★4.9 · 15 138 отзывов</div>
         <div class="card-body">
           <span class="role">Аккумулятор</span>
-          <h3>Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,выпуклый электрод, 1 ШТ</h3>
-          <p class="specs">18650, 3,7 В, 2000 мА·ч</p>
-          <p class="note">Даёт около 18 часов работы</p>
-          <div class="row"><span class="price">117 ₽</span><span class="days">доставка 3 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/akkumulyatornaya-batareyka-18650-2000-mach-li-ion-3-7-v-vypuklyy-elektrod-1-sht-3936156676/" target="_blank" rel="noopener">Открыть на Ozon</a>
+          <h3>Аккумулятор 18650 2000 мАч Li-ion 3,7 В,1 ШТ</h3>
+          <p class="specs">Li-ion 18650, 3,7 В, 2000 мА·ч</p>
+          <p class="note">Даёт ≈18 часов работы; заряжается через плату зарядки от любого USB</p>
+          <div class="row"><span class="price">222 ₽</span><span class="days">доставка завтра</span></div>
+          <a class="btn" href="https://www.ozon.ru/product/akkumulyator-18650-2000-mach-li-ion-3-7-v-1-sht-3342142187/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_holder.webp" alt=""></div>
-        <div class="rating">★4.9 · 784 отзыва</div>
-        <div class="card-body">
-          <span class="role">Батарейный отсек</span>
-          <h3>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с проводами к Arduino/Слот батарейки для ардуино</h3>
-          <p class="specs">Отсек под 18650 с уже прикрученными проводами</p>
-          <p class="note">Провода отсека идут в плату зарядки; паять не нужно, жилы зажимаются винтами</p>
-          <div class="row"><span class="price">86 ₽</span><span class="days">доставка 1 дн.</span></div>
-          <a class="btn" href="https://www.ozon.ru/product/batareynyy-otsek-1h-dlya-akkumulyatorov-li-ion-18650-s-provodami-k-arduino-slot-batareyki-2708696421/" target="_blank" rel="noopener">Открыть на Ozon</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-img"><img src="img/bt2_tp4056.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt3_tp.jpg" alt=""></div>
         <div class="rating">★4.9 · 1 176 отзывов</div>
         <div class="card-body">
           <span class="role">Плата зарядки</span>
           <h3>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устройство для Li-lon аккумуляторов.</h3>
-          <p class="specs">TP4056: зарядка по USB-C, защита от переразряда</p>
-          <p class="note">Между отсеком и платой расширения: отсек → B+/B−, выход → 5V платы</p>
-          <div class="row"><span class="price">64 ₽</span><span class="days">доставка 1 дн.</span></div>
+          <p class="specs">TP4056, USB Type-C, со схемой защиты</p>
+          <p class="note">Два провода отсека и два выходных — в клеммную колодку</p>
+          <div class="row"><span class="price">64 ₽</span><span class="days">доставка завтра</span></div>
           <a class="btn" href="https://www.ozon.ru/product/modul-zaryadki-tp4056-usb-type-c-s-zashchitoy-zaryadnoe-ustroystvo-dlya-li-lon-akkumulyatorov-5518679496/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-img"><img src="img/bt2_term.webp" alt=""></div>
+        <div class="card-img"><img src="img/bt3_term.jpg" alt=""></div>
         <div class="rating">★4.9 · 863 отзыва</div>
         <div class="card-body">
           <span class="role">Клеммная колодка</span>
           <h3>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В</h3>
-          <p class="specs">Винтовая колодка на 8 контактов</p>
-          <p class="note">Чтобы соединить провода отсека с отверстиями платы зарядки без пайки: жилы с двух сторон зажимаются винтами</p>
-          <div class="row"><span class="price">119 ₽</span><span class="days">доставка 1 дн.</span></div>
+          <p class="specs">винтовая, 8 контактов, 15 А</p>
+          <p class="note">Сюда зажимаются провода отсека и платы зарядки: плюс → B+, минус → B−</p>
+          <div class="row"><span class="price">119 ₽</span><span class="days">доставка завтра</span></div>
           <a class="btn" href="https://www.ozon.ru/product/klemmnaya-kolodka-vintovaya-s-kryshkoy-8-kontaktov-15-a-600-v-3245596810/" target="_blank" rel="noopener">Открыть на Ozon</a>
         </div>
       </article>
@@ -194,37 +195,58 @@ Bluetooth. Собирается без пайки: микроконтролле�
 <h3>Смета</h3>
 <table>
   <tr><th>Роль</th><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Итого</th><th>Доставка</th><th>Отзывы</th></tr>
-  <tr><td>Микроконтроллер</td><td>Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для </td><td class='num'>326 ₽</td><td class='num'>1 шт</td><td class='num'>326 ₽</td><td class='num'>7 дн.</td><td class='num'>★4.9 · 286</td></tr>
-<tr><td>Плата расширения</td><td>Плата расширения для ESP32-C3 Super Mini</td><td class='num'>264 ₽</td><td class='num'>1 шт</td><td class='num'>264 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.7 · 209</td></tr>
-<tr><td>Экран</td><td>OLED дисплей 0.96" 128x64 I2C голубые пиксели</td><td class='num'>249 ₽</td><td class='num'>1 шт</td><td class='num'>249 ₽</td><td class='num'>5 дн.</td><td class='num'>★4.8 · 168</td></tr>
-<tr><td>Провода</td><td>Провод соединительный папа-мама "Dupont", 20 см, 40 шт</td><td class='num'>124 ₽</td><td class='num'>1 шт</td><td class='num'>124 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 665</td></tr>
-<tr><td>Аккумулятор</td><td>Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,вып</td><td class='num'>117 ₽</td><td class='num'>1 шт</td><td class='num'>117 ₽</td><td class='num'>3 дн.</td><td class='num'>★4.8 · 4 165</td></tr>
-<tr><td>Батарейный отсек</td><td>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с про</td><td class='num'>86 ₽</td><td class='num'>1 шт</td><td class='num'>86 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 784</td></tr>
-<tr><td>Плата зарядки</td><td>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устр</td><td class='num'>64 ₽</td><td class='num'>1 шт</td><td class='num'>64 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 1 176</td></tr>
-<tr><td>Клеммная колодка</td><td>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, </td><td class='num'>119 ₽</td><td class='num'>1 шт</td><td class='num'>119 ₽</td><td class='num'>1 дн.</td><td class='num'>★4.9 · 863</td></tr>
-  <tr class="total"><td colspan="4">Всего</td><td class="num">1 349 ₽</td><td></td><td></td></tr>
+  <tr><td>Микроконтроллер</td><td>ESP32-C3 Super Mini Отладочная плата на базе микроконтро</td><td class='num'>446 ₽</td><td class='num'>1 шт</td><td class='num'>446 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 82</td></tr>
+<tr><td>Экран</td><td>OLED дисплей 0.96" 128x64, I2C, Белый</td><td class='num'>271 ₽</td><td class='num'>1 шт</td><td class='num'>271 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 1 350</td></tr>
+<tr><td>Основа для соединений</td><td>Беспаечная макетная плата Arduino 400 точек (BREADBOARD)</td><td class='num'>175 ₽</td><td class='num'>1 шт</td><td class='num'>175 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 831</td></tr>
+<tr><td>Провода</td><td>Провод соединительный мама-мама "Dupont", 10 см, 40 шт</td><td class='num'>124 ₽</td><td class='num'>1 шт</td><td class='num'>124 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 665</td></tr>
+<tr><td>Отсек для аккумулятора</td><td>Батарейный отсек 1х для аккумуляторов Li-ion 18650 с про</td><td class='num'>62 ₽</td><td class='num'>1 шт</td><td class='num'>62 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 22 604</td></tr>
+<tr><td>Аккумулятор</td><td>Аккумулятор 18650 2000 мАч Li-ion 3,7 В,1 ШТ</td><td class='num'>222 ₽</td><td class='num'>1 шт</td><td class='num'>222 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 15 138</td></tr>
+<tr><td>Плата зарядки</td><td>Модуль зарядки TP4056 USB Type-C с защитой,зарядное устр</td><td class='num'>64 ₽</td><td class='num'>1 шт</td><td class='num'>64 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 1 176</td></tr>
+<tr><td>Клеммная колодка</td><td>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, </td><td class='num'>119 ₽</td><td class='num'>1 шт</td><td class='num'>119 ₽</td><td class='num'>завтра</td><td class='num'>★4.9 · 863</td></tr>
+  <tr class="total"><td colspan="4">Всего</td><td class="num">1 483 ₽</td><td></td><td></td></tr>
 </table>
 <p>Количества указаны явно: в наборе проводов 40 штук, а нужно 6 — одного набора хватит с запасом;
 остальные позиции берутся по одной.</p>
 
-<h2>Как это соединяется (у платы нет ножек)</h2>
+<h2>Как это соединяется</h2>
 <table>
   <tr><th>Что с чем</th><th>Чем соединяется</th><th>Куда именно</th></tr>
-  <tr><td>ESP32-C3 → плата расширения</td><td>вставляется в разъёмы расширения</td>
-      <td>своих ножек у микроплаты нет вообще, поэтому без переходной платы подключить нечего</td></tr>
-  <tr><td>Экран → плата расширения</td><td>4 провода <b>«папа-мама»</b></td>
-      <td>у экрана ножки-«папа», поэтому со стороны экрана нужна «мама», а в разъёмы платы
-          идёт «папа»: VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9</td></tr>
+  <tr><td>Ножки микроконтроллера</td><td><b>пайка</b> — единственная в сборке</td>
+      <td>гребёнки лежат в комплекте отдельно и не распаяны: припаиваются к плате, после чего
+          плата вставляется в макетную плату</td></tr>
+  <tr><td>Экран → макетная плата</td><td>4 провода <b>«мама-мама»</b></td>
+      <td>у экрана ножки уже распаяны продавцом; «мама» надевается и на ножки экрана, и на ножки
+          платы: VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9</td></tr>
   <tr><td>Батарейный отсек → плата зарядки</td><td>винтовая клеммная колодка</td>
-      <td>провода отсека и ответные провода зажимаются винтами: плюс → B+, минус → B−</td></tr>
-  <tr><td>Плата зарядки → плата расширения</td><td>2 провода «папа-мама»</td>
-      <td>OUT+ → 5V, OUT− → GND платы расширения</td></tr>
+      <td>четыре провода зажимаются винтами: плюс отсека → B+, минус отсека → B−,
+          выход OUT+ и OUT− → в макетную плату</td></tr>
+  <tr><td>Плата зарядки → макетная плата</td><td>2 провода «мама-мама»</td>
+      <td>OUT+ → 5V, OUT− → GND</td></tr>
 </table>
 <div class="box">
-  <b>Почему «папа-мама», а не «мама-мама».</b> Шлейф «мама-мама» подходит, только если у обеих
-  сторон есть ножки. У ESP32-C3 их нет совсем, у платы зарядки — только отверстия под пайку.
-  Поэтому берём «папа-мама»: он садится и на ножки экрана, и в разъёмы расширения, а голые
-  провода отсека соединяются через винтовую колодку.
+  <b>Почему «мама-мама», а не «папа-мама».</b> «Мама» нужна там, где есть штырёк. После пайки
+  гребёнок штырьки есть и у платы, и у экрана — значит, подходят обычные «мама-мама».
+  «Папа-мама» понадобился бы для гнёзд платы расширения, но её в этой сборке заменила макетная
+  плата: дешевле, держит жёстче и позволяет менять схему без пайки.
+</div>
+
+<h2>Три вопроса про соединения</h2>
+<div class="box">
+  <b>1. Провода отсека правда просто засовываются в винты?</b><br>
+  Да. У колодки восемь независимых винтов: зачищаешь конец провода на 8–10 мм, вставляешь в
+  отверстие, затягиваешь винт. Это самое крепкое соединение во всей сборке, паять не нужно.
+  Полярность проверь дважды: перепутанный плюс портит плату зарядки.<br><br>
+  <b>2. Провода «мама-мама» не будут болтаться?</b><br>
+  На штырьках они держатся трением: сами не выпадут, но при рывке сойдут. Подрезать провода не
+  нужно и вредно — подрезанный конец придётся переобжимать, то есть паять. Вместо подрезки в сборке
+  есть <b>макетная плата</b>: плата, экран и провода вставляются в неё, и вся конструкция
+  становится жёсткой, как будто всё припаяно. Это стандартный способ у радиолюбителей.<br><br>
+  <b>3. Значит, паять всё-таки придётся?</b><br>
+  Да, ровно один раз: <b>две планки ножек к микроконтроллеру</b>. На фото товара видно, что гребёнка
+  лежит рядом с платой отдельно — без неё провода физически некуда надеть. Это две планки, около
+  5 минут любым паяльником. Всё остальное собирается без пайки. Вариант «вообще без пайки» бывает,
+  но требует платы с уже распаянными ножками: с доставкой «завтра» и нормальными отзывами таких
+  в наличии нет — они едут 3–7 дней.
 </div>
 
 <h2>Схема</h2>
@@ -250,7 +272,7 @@ Bluetooth. Собирается без пайки: микроконтролле�
 
   <rect x="0" y="0" width="940" height="540" fill="#0b1220"/>
   <text x="24" y="34" class="lbl" font-size="18">Схема: аккумулятор → зарядка → ESP32-C3 → OLED, и Bluetooth снаружи</text>
-  <text x="24" y="56" class="sub">Все соединения — разъёмы и шлейфы «мама-мама». Пайка не нужна. Красный — плюс, серый — минус, синий пунктир — данные.</text>
+  <text x="24" y="56" class="sub">Соединения — разъёмы, макетная плата и винтовая колодка. Пайка нужна только для ножек платы. Красный — плюс, серый — минус, синий пунктир — данные.</text>
 
   <!-- Аккумулятор -->
   <g>
@@ -281,7 +303,7 @@ Bluetooth. Собирается без пайки: микроконтролле�
     <rect x="568" y="104" width="180" height="152" rx="10" class="box"/>
     <text x="658" y="132" text-anchor="middle" class="lbl">ESP32-C3</text>
     <text x="658" y="152" text-anchor="middle" class="sub">Wi-Fi + Bluetooth</text>
-    <text x="658" y="170" text-anchor="middle" class="sub">в плате расширения</text>
+    <text x="658" y="170" text-anchor="middle" class="sub">в макетной плате</text>
     <text x="580" y="196" class="tname">5V (от зарядки)</text>
     <rect x="568" y="200" width="52" height="18" rx="4" class="term"/>
     <text x="580" y="234" class="tname">GND</text>
@@ -317,7 +339,7 @@ Bluetooth. Собирается без пайки: микроконтролле�
   <text x="398" y="330" class="note">выход зарядки → 5V и GND платы</text>
 
   <path class="wd" d="M658 256 C 658 290, 658 300, 658 330" marker-end="url(#a2)"/>
-  <text x="612" y="300" class="note" fill="#38bdf8">4 провода «папа-мама»: 3V3, GND, GPIO8, GPIO9</text>
+  <text x="612" y="300" class="note" fill="#38bdf8">4 провода «мама-мама»: 3V3, GND, GPIO8, GPIO9</text>
 
   <path class="wd" d="M748 180 C 780 180, 780 180, 792 180" marker-end="url(#a2)"/>
   <text x="806" y="92" class="note" fill="#38bdf8">Bluetooth (BLE)</text>
@@ -330,11 +352,11 @@ Bluetooth. Собирается без пайки: микроконтролле�
   <text x="42" y="448" class="sub">4. Зарядка: у TP4056 на вход USB-C, аккумулятор в B+/B−</text>
   <text x="42" y="470" class="sub">5. Первая прошивка — по USB с компьютера</text>
 
-  <text x="660" y="510" class="sub">Вариант «одна плата» (TTGO T-Display): всё то же, но экран и зарядка уже внутри платы —</text>
+  <text x="660" y="510" class="sub">Дешёвый «TTGO T-Display» за 485 ₽ — пластиковый корпус, а не плата: платы —</text>
   <text x="660" y="528" class="sub">соединять нечего, только вставить аккумулятор в разъём.</text>
 </svg>
 
-  <figcaption>Питание: отсек → плата зарядки → плата расширения. Экран: четыре провода «папа-мама».</figcaption>
+  <figcaption>Питание: отсек → клеммная колодка → плата зарядки → макетная плата. Экран: четыре провода «мама-мама».</figcaption>
 </figure>
 
 <h2>Расчёт автономности</h2>
@@ -360,13 +382,13 @@ Bluetooth. Собирается без пайки: микроконтролле�
 
 <h2>Порядок сборки</h2>
 <ol class="steps">
-  <li>Вставь аккумулятор в батарейный отсек.</li>
-  <li>Соедини отсек с платой зарядки через винтовую колодку: плюс → B+, минус → B−.
-      Полярность проверь дважды — перепутанная портит плату.</li>
-  <li>Выход зарядки (OUT+ и OUT−) двумя проводами «папа-мама» подключи к 5V и GND платы расширения.</li>
-  <li>Вставь ESP32-C3 в плату расширения.</li>
-  <li>Четырьмя проводами «папа-мама» подключи экран: VCC → 3V3, GND → GND, SDA → GPIO8, SCL → GPIO9.
-      Если экран молчит — поменяй местами SDA и SCL.</li>
+  <li>Припаяй две планки ножек к микроконтроллеру — это единственная пайка за всю сборку.</li>
+  <li>Вставь микроконтроллер и экран в макетную плату.</li>
+  <li>Соедини экран с платой четырьмя проводами «мама-мама»: VCC → 3V3, GND → GND, SDA → GPIO8,
+      SCL → GPIO9. Если экран молчит — поменяй местами SDA и SCL.</li>
+  <li>Вставь аккумулятор в отсек. Провода отсека и провода от платы зарядки зажми в клеммной
+      колодке винтами: плюс → B+, минус → B−. Полярность проверь дважды — перепутанная портит плату.</li>
+  <li>Двумя проводами «мама-мама» подай выход платы зарядки (OUT+ и OUT−) на 5V и GND макетной платы.</li>
   <li>Подключи плату к компьютеру по USB и залей прошивку
       (<a href="files/bt_display/c3_oled_firmware.ino">c3_oled_firmware.ino</a>).</li>
   <li>Проверь, что устройство видно как <code>Hermes-Display</code>, и отправь первый текст:
@@ -384,8 +406,13 @@ Bluetooth. Собирается без пайки: микроконтролле�
 
 <h2>Честно о рисках</h2>
 <ul>
-  <li><b>Стоимость — 1 349 ₽</b>, а не меньше: это цена правильных разъёмов и товаров
+  <li><b>Стоимость — 1 483 ₽</b>, а не меньше: это цена правильных разъёмов и товаров
       с отзывами. Убрать клеммную колодку нельзя — без неё голые провода отсека соединять нечем.</li>
+  <li><b>Одна пайка всё-таки есть</b> — две планки ножек микроконтроллера. Без них провода
+      подключать некуда, а плат с уже распаянными ножками с доставкой «завтра» и отзывами
+      в наличии не оказалось (они едут 3–7 дней).</li>
+  <li><b>Слабое место сборки</b> — стык проводов отсека с платой зарядки: винтовая колодка держит
+      крепко, но если хочется совсем надёжно, эти четыре точки стоит пропаять.</li>
   <li><b>Код написан, но на живом железе не проверен</b> — платы пока нет. Скажи, когда приедет, —
       зальём прошивку и поправим то, что не сойдётся.</li>
   <li><b>Первая прошивка требует компьютера</b> с USB и драйвером USB-COM.</li>
@@ -393,7 +420,7 @@ Bluetooth. Собирается без пайки: микроконтролле�
 </ul>
 
 <footer>
-  Цены, наличие и отзывы — Ozon, 19.09.2026, фильтр «доставка до 7 дней». Товары без отзывов
+  Цены, наличие и отзывы — Ozon, 19.09.2026, фильтр «доставка завтра». Товары без отзывов
   или с плохими оценками в список не включались. Фотографии принадлежат продавцам Ozon и приведены
   со ссылками на страницы товаров. Прошивки написаны под эти платы; проверка на живом модуле —
   после покупки.
