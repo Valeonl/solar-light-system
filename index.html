@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Автономный свет на солнечной панели — сборка без пайки</title>
+<style>
+  :root{
+    --bg:#0b1220; --panel:#111827; --panel2:#0f172a; --line:#1f2937; --line2:#334155;
+    --fg:#e5e7eb; --muted:#94a3b8; --accent:#f59e0b; --good:#22c55e; --bad:#ef4444;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+  a{color:var(--accent)}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header.hero{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:36px}
+  h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:0 0 12px}
+  .lead{color:var(--muted);font-size:18px;max-width:70ch}
+  h2{font-size:clamp(20px,2.6vw,26px);margin:56px 0 16px;padding-bottom:8px;
+    border-bottom:1px solid var(--line)}
+  h3{font-size:17px;margin:0 0 6px;line-height:1.3}
+  p{margin:10px 0}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:24px 0}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .kpi b{display:block;font-size:24px;color:var(--accent);line-height:1.2}
+  .kpi span{color:var(--muted);font-size:13.5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:20px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column}
+  .card-img{background:#fff;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+  .card-img img{width:100%;height:100%;object-fit:contain}
+  .card-body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .role{display:inline-block;background:var(--panel2);border:1px solid var(--line2);color:var(--muted);
+    font-size:12px;padding:2px 8px;border-radius:999px;align-self:flex-start}
+  .specs{color:var(--fg);font-size:14px;margin:0}
+  .note{color:var(--muted);font-size:13px;margin:0}
+  .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:auto;gap:8px}
+  .price{font-size:20px;font-weight:700}
+  .days{color:var(--muted);font-size:13px;text-align:right}
+  .btn{display:block;text-align:center;background:var(--accent);color:#111827;font-weight:600;
+    text-decoration:none;padding:9px 12px;border-radius:10px;margin-top:10px}
+  .btn:hover{filter:brightness(1.08)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:var(--muted);font-weight:600}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.total td{background:var(--panel);font-weight:700;font-size:16px}
+  .good{color:var(--good)} .bad{color:var(--bad)}
+  .box{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:10px;padding:14px 16px;margin:18px 0}
+  .warn{border-left-color:var(--bad)}
+  .ok{border-left-color:var(--good)}
+  ol.steps{counter-reset:s;list-style:none;padding:0}
+  ol.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 58px;margin:10px 0;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px}
+  ol.steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:28px;height:28px;
+    border-radius:50%;background:var(--accent);color:#111827;font-weight:700;display:flex;
+    align-items:center;justify-content:center;font-size:14px}
+  figure{margin:22px 0}
+  figure svg{width:100%;height:auto;border:1px solid var(--line);border-radius:var(--radius)}
+  figcaption{color:var(--muted);font-size:13.5px;margin-top:8px}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:14px}
+  footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+  @media (max-width:600px){ .wrap{padding:22px 14px 60px} table{font-size:13px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Автономный свет: солнечная панель → аккумулятор → лампа</h1>
+  <p class="lead">Днём панель заряжает аккумулятор, вечером лампа загорается сама — по фотореле.
+  Никакой пайки: все соединения на винтовых клеммах и болтах. Цены и сроки доставки — Ozon,
+  на 19.09.2026.</p>
+  <div class="kpis">
+    <div class="kpi"><b>3,383 ₽</b><span>весь комплект по этому списку</span></div>
+    <div class="kpi"><b>5 Вт</b><span>лампа; 6 часов после заката = 30 Вт·ч в сутки</span></div>
+    <div class="kpi"><b>1.4 сут</b><span>автономия на АКБ 7 А·ч в режиме 6 часов</span></div>
+    <div class="kpi"><b>30 Вт</b><span>панель даёт 52 Вт·ч в сутки в сентябре–октябре</span></div>
+  </div>
+</header>
+
+<h2>Как это работает</h2>
+<ol>
+  <li><b>Солнечная панель</b> — 12 В, отдаёт ток, когда на неё падает свет.</li>
+  <li><b>Контроллер заряда (PWM)</b> — держит напряжение в безопасных для аккумулятора пределах
+      и не даёт энергии уходить обратно в панель ночью. В выбранном комплекте панели он уже есть,
+      отдельно покупать не нужно.</li>
+  <li><b>Аккумулятор 12 В</b> — накапливает заряд, вечером отдаёт его лампе.</li>
+  <li><b>Фотореле 12 В</b> — датчик освещённости: стемнело — замкнуло цепь, рассвело — разомкнуло.</li>
+  <li><b>Лампа 12 В</b> — светит всю ночь, не потребляя 220 В.</li>
+</ol>
+<p>Ключевая деталь для «горит, когда уходит солнце» — <b>фотореле</b> (или режим светоконтроля
+в самом контроллере, если он его поддерживает). Фотореле ставится в разрыв плюсового провода
+нагрузки и работает как автоматический выключатель по освещённости.</p>
+
+<figure>
+  <svg style="display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="Схема подключения: солнечная панель, контроллер, аккумулятор, фотореле и лампа">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .box{fill:#111827;stroke:#334155;stroke-width:2;rx:10}
+      .lbl{fill:#e2e8f0;font-size:15px;font-weight:600}
+      .sub{fill:#94a3b8;font-size:12.5px}
+      .term{fill:#0f172a;stroke:#475569;stroke-width:1.5}
+      .tname{fill:#cbd5e1;font-size:11.5px;font-family:ui-monospace,Consolas,monospace}
+      .wirep{stroke:#ef4444;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wiren{stroke:#1f2937;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wirel{stroke:#f59e0b;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .note{fill:#94a3b8;font-size:12px}
+      .frame{fill:none;stroke:#1e293b;stroke-width:1.5;stroke-dasharray:6 6}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="560" fill="#0b1220"/>
+  <text x="24" y="34" class="lbl" font-size="18">Схема подключения — 12 В, всё на винтовых клеммах (без пайки)</text>
+  <text x="24" y="56" class="sub">Красный — плюс, чёрный — минус, жёлтый — линия нагрузки. Полярность перепутать нельзя: контроллер выйдет из строя.</text>
+
+  <!-- Солнечная панель -->
+  <g>
+    <rect x="24" y="96" width="216" height="126" rx="10" class="box"/>
+    <text x="132" y="126" text-anchor="middle" class="lbl">Солнечная панель</text>
+    <text x="132" y="148" text-anchor="middle" class="sub">12 В, 30–50 Вт</text>
+    <text x="132" y="168" text-anchor="middle" class="sub">выход: 2 провода</text>
+    <rect x="52" y="188" width="46" height="22" rx="4" class="term"/><text x="75" y="204" text-anchor="middle" class="tname">+</text>
+    <rect x="158" y="188" width="46" height="22" rx="4" class="term"/><text x="181" y="204" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Контроллер -->
+  <g>
+    <rect x="352" y="88" width="240" height="230" rx="10" class="box"/>
+    <text x="472" y="118" text-anchor="middle" class="lbl">PWM-контроллер заряда</text>
+    <text x="472" y="140" text-anchor="middle" class="sub">12/24 В, 10–20 А</text>
+    <text x="472" y="158" text-anchor="middle" class="sub">с датчиком света и таймером</text>
+
+    <text x="368" y="190" class="tname">PV +</text>
+    <rect x="352" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="368" y="238" class="tname">PV −</text>
+    <rect x="352" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="430" y="190" class="tname">BAT +</text>
+    <rect x="424" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="430" y="238" class="tname">BAT −</text>
+    <rect x="424" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="500" y="190" class="tname">LOAD +</text>
+    <rect x="496" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="500" y="238" class="tname">LOAD −</text>
+    <rect x="496" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="472" y="296" text-anchor="middle" class="sub">клеммы винтовые: жила зажимается винтом</text>
+  </g>
+
+  <!-- Аккумулятор -->
+  <g>
+    <rect x="700" y="96" width="216" height="126" rx="10" class="box"/>
+    <text x="808" y="126" text-anchor="middle" class="lbl">Аккумулятор 12 В</text>
+    <text x="808" y="148" text-anchor="middle" class="sub">AGM/SLA, 12–24 А·ч</text>
+    <text x="808" y="168" text-anchor="middle" class="sub">болтовые клеммы</text>
+    <rect x="728" y="188" width="46" height="22" rx="4" class="term"/><text x="751" y="204" text-anchor="middle" class="tname">+</text>
+    <rect x="842" y="188" width="46" height="22" rx="4" class="term"/><text x="865" y="204" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Лампа -->
+  <g>
+    <rect x="352" y="392" width="240" height="120" rx="10" class="box"/>
+    <text x="472" y="422" text-anchor="middle" class="lbl">Лампа 12 В LED</text>
+    <text x="472" y="444" text-anchor="middle" class="sub">E27 в патроне с проводами</text>
+    <text x="472" y="458" text-anchor="middle" class="sub">или готовый светильник 12 В</text>
+    <rect x="368" y="478" width="46" height="20" rx="4" class="term"/><text x="391" y="492" text-anchor="middle" class="tname">+</text>
+    <rect x="530" y="478" width="46" height="20" rx="4" class="term"/><text x="553" y="492" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Фотореле -->
+  <g>
+    <rect x="700" y="392" width="216" height="120" rx="10" class="box"/>
+    <text x="808" y="422" text-anchor="middle" class="lbl">Фотореле 12 В</text>
+    <text x="808" y="444" text-anchor="middle" class="sub">замыкает цепь</text>
+    <text x="808" y="462" text-anchor="middle" class="sub">когда стемнеет</text>
+    <text x="808" y="486" text-anchor="middle" class="note">вход + / − , выход + / −</text>
+  </g>
+
+  <!-- Провода: панель → контроллер -->
+  <path class="wirep" d="M98 188 C 98 150, 300 150, 352 206" marker-end="url(#arr)"/>
+  <path class="wiren" d="M204 188 C 204 250, 300 260, 352 254" marker-end="url(#arr)"/>
+  <text x="214" y="138" class="note">панель → PV</text>
+
+  <!-- Провода: контроллер → АКБ -->
+  <path class="wirep" d="M484 196 C 600 160, 680 170, 751 188" marker-end="url(#arr)"/>
+  <path class="wiren" d="M484 254 C 620 290, 700 260, 865 188" marker-end="url(#arr)"/>
+  <text x="596" y="148" class="note">контроллер → АКБ</text>
+  <text x="560" y="316" class="note">предохранитель 5–15 А в плюсовом проводе</text>
+  <circle cx="628" cy="196" r="7" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="642" y="200" class="note" fill="#f59e0b">FU</text>
+
+  <!-- Провода: контроллер → фотореле → лампа -->
+  <path class="wirel" d="M556 206 C 640 300, 700 330, 808 392" marker-end="url(#arr)"/>
+  <path class="wirel" d="M808 512 C 808 552, 700 552, 610 546 C 580 544, 566 520, 553 486" marker-end="url(#arr)"/>
+  <path class="wirel" d="M391 478 C 391 440, 430 430, 472 512" marker-end="url(#arr)"/>
+  <text x="560" y="342" class="note" fill="#f59e0b">LOAD → фотореле → лампа</text>
+
+  <rect x="24" y="392" width="290" height="120" rx="10" class="frame"/>
+  <text x="40" y="418" class="lbl" font-size="14">Порядок подключения</text>
+  <text x="40" y="440" class="sub">1. АКБ → контроллер (сначала минус)</text>
+  <text x="40" y="460" class="sub">2. Панель → контроллер</text>
+  <text x="40" y="480" class="sub">3. Лампа → LOAD (через фотореле)</text>
+  <text x="40" y="500" class="sub">4. Отключать в обратном порядке</text>
+</svg>
+
+  <figcaption>Схема: панель и аккумулятор идут на контроллер, контроллер отдаёт нагрузку через фотореле на лампу.</figcaption>
+</figure>
+
+<h2>Расчёт мощностей</h2>
+<p>Исходные данные: лампа <b>5 Вт</b>, темнота осенью <b>12 ч</b>,
+зимой <b>17 ч</b>; КПД всего тракта (контроллер, нагрев, угол, пыль) <b>70%</b>;
+для свинцового АКБ берём разряд не глубже <b>50%</b>.</p>
+
+<h3>1. Сколько энергии съедает лампа</h3>
+<table>
+  <tr><th>Режим лампы</th><th>Сколько горит</th><th>Расход за сутки</th></tr>
+  <tr><td><b>По таймеру</b> (рекомендуемый)</td><td class="num">6 ч после заката</td><td class="num">30 Вт·ч</td></tr>
+  <tr><td>Всю ночь, сентябрь–октябрь</td><td class="num">12 ч</td><td class="num">60 Вт·ч</td></tr>
+  <tr><td>Всю ночь, декабрь</td><td class="num">17 ч</td><td class="num">85 Вт·ч</td></tr>
+</table>
+<p>Режим задаётся на контроллере (у большинства ШИМ-моделей есть «светоконтроль» и таймер
+2/4/6/8 часов). Именно этот выбор делает систему на 7-амперном аккумуляторе рабочей:
+за 6 часов лампа съедает 30 Вт·ч, а не 60.</p>
+
+<h3>2. Какая нужна ёмкость аккумулятора</h3>
+<p>Полезная ёмкость = 12 В × А·ч × 50%. «Автономия» — на сколько суток хватит
+заряженного аккумулятора без всякого солнца.</p>
+<table>
+  <tr><th>Ёмкость, А·ч</th><th>Полезно, Вт·ч</th><th>Автономия, режим 6 ч</th><th>Автономия, вся ночь осенью</th><th>Автономия в декабре</th></tr>
+  <tr><td class='num'>7</td><td class='num'>42</td><td class='num good'>1.4</td><td class='num bad'>0.7</td><td class='num'>0.5</td></tr>
+<tr><td class='num'>12</td><td class='num'>72</td><td class='num good'>2.4</td><td class='num good'>1.2</td><td class='num'>0.8</td></tr>
+<tr><td class='num'>18</td><td class='num'>108</td><td class='num good'>3.6</td><td class='num good'>1.8</td><td class='num'>1.3</td></tr>
+<tr><td class='num'>24</td><td class='num'>144</td><td class='num good'>4.8</td><td class='num good'>2.4</td><td class='num'>1.7</td></tr>
+</table>
+
+<h3>3. Какая нужна панель</h3>
+<p>Считаем честно: панель 30 Вт × число «солнечных часов» × КПД тракта 70%.
+Солнечные часы — это время, когда панель выдаёт близкую к паспортной мощность. Для
+Санкт-Петербурга это примерно 5 ч в июне, 2,5 ч в сентябре–октябре и всего 0,8 ч в декабре.</p>
+<table>
+  <tr><th>Сезон</th><th>Соберёт за сутки</th><th>Хватит лампе на</th><th>Покрывает режим 6 ч</th><th>Покрывает всю ночь</th></tr>
+  <tr><td>Июнь (5 ч солнца)</td><td class='num'>105</td><td class='num'>21.0 ч</td><td class='num good'>да</td><td class='num good'>да</td></tr>
+<tr><td>Сентябрь–октябрь (2,5 ч)</td><td class='num'>52</td><td class='num'>10.5 ч</td><td class='num good'>да</td><td class='num bad'>нет</td></tr>
+<tr><td>Декабрь (0,8 ч)</td><td class='num'>17</td><td class='num'>3.4 ч</td><td class='num bad'>нет</td><td class='num bad'>нет</td></tr>
+</table>
+<p>Читается это так: с сентября по апрель панели <b>хватает</b> на режим «6 часов после заката»,
+а всю ночь на 5-ваттной лампе она вытягивает только в светлое время года.</p>
+<div class="box warn">
+  <b>Честно про декабрь.</b> В декабре в Петербурге панель 30 Вт соберёт всего
+  около 17 Вт·ч в сутки — это 3.4 часа работы лампы.
+  Остальное надо либо взять из аккумулятора (он начнёт постепенно разряжаться), либо дозаряжать
+  аккумулятор от сети раз в неделю. С марта по октябрь такой системы хватает с запасом,
+  летом аккумулятор будет заряжаться быстрее, чем разряжаться.
+</div>
+
+<h3>4. Токи и защита</h3>
+<table>
+  <tr><th>Участок</th><th>Ток</th><th>Защита</th></tr>
+  <tr><td>Панель 30 Вт → контроллер</td><td class="num">2.5 А</td>
+      <td>предохранитель 5 А в плюсовом проводе у аккумулятора</td></tr>
+  <tr><td>Лампа 5 Вт</td><td class="num">0.42 А</td>
+      <td>достаточно предохранителя 2 А</td></tr>
+  <tr><td>Контроллер</td><td class="num">до 10 А</td><td>берём с запасом по току и напряжению 12/24 В</td></tr>
+</table>
+
+<h2>Список товаров</h2>
+<p>Всё найдено на Ozon с фильтром <b>«доставка до 7 дней»</b> — то, что реально придёт на этой неделе.
+Цены — на момент сборки страницы, они меняются каждый день.</p>
+<div class="grid">
+
+      <article class="card">
+        <div class="card-img"><img src="img/panel.webp" alt="Солнечная панель мощностью 30 Вт, 12 В, генератор на перезаряжаемых батареях с к" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Солнечная панель + контроллер</span>
+          <h3>Солнечная панель мощностью 30 Вт, 12 В, генератор на перезаряжаемых батареях с контроллером</h3>
+          <p class="specs">30 Вт, 12 В, поликристалл, в комплекте идёт ШИМ-контроллер</p>
+          <p class="note">Склад Ozon в Ленинградской области — приезжает на следующий день</p>
+          <div class="row">
+            <span class="price">1,415 ₽</span>
+            <span class="days">доставка 1 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/solnechnaya-panel-moshchnostyu-30-vt-12-v-generator-na-perezaryazhaemyh-batareyah-s-kontrollerom-3644364757/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/battery.webp" alt="Аккумулятор для опрыскивателя 12В 7Ач" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Аккумулятор</span>
+          <h3>Аккумулятор для опрыскивателя 12В 7Ач</h3>
+          <p class="specs">12 В, 7 А·ч, AGM (герметичный, необслуживаемый)</p>
+          <p class="note">Основа системы. Позже можно добавить такой же второй — они соединяются параллельно</p>
+          <div class="row">
+            <span class="price">723 ₽</span>
+            <span class="days">доставка 5 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/akkumulyator-dlya-opryskivatelya-12v-7ach-5413536418/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/fotorele.webp" alt="Регулятор освещения ФР-08 (фотореле 12 В / 10 А)" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Фотореле</span>
+          <h3>Регулятор освещения ФР-08 (фотореле 12 В / 10 А)</h3>
+          <p class="specs">ФР-08, 12 В, до 10 А</p>
+          <p class="note">Тот самый «включатель, когда уходит солнце»: реагирует на освещённость, а не на время</p>
+          <div class="row">
+            <span class="price">222 ₽</span>
+            <span class="days">доставка 6 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/regulyator-osveshcheniya-fr-08-fotorele-12-v-10-a-2120587493/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/lamp.webp" alt="Лампочка Светодиодная Низковольтная 12 вольт 5 ватт цоколь E27 4000K" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Лампа</span>
+          <h3>Лампочка Светодиодная Низковольтная 12 вольт 5 ватт цоколь E27 4000K</h3>
+          <p class="specs">12 В, 5 Вт, цоколь E27, низковольтная (не 220 В!)</p>
+          <p class="note">Низковольтная — рассчитана на 12–48 В, обычная 220-вольтовая не подойдёт</p>
+          <div class="row">
+            <span class="price">271 ₽</span>
+            <span class="days">доставка 4 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/lampochka-svetodiodnaya-nizkovoltnaya-12-volt-5-vatt-tsokol-e27-4000k-365817852/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/socket.webp" alt="REXANT Патрон E27 подвесной с клеммной колодкой" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Патрон</span>
+          <h3>REXANT Патрон E27 подвесной с клеммной колодкой</h3>
+          <p class="specs">E27, с клеммной колодкой на проводе</p>
+          <p class="note">Сам патрон уже с колодкой — паять нечего, провода зажимаются винтами</p>
+          <div class="row">
+            <span class="price">91 ₽</span>
+            <span class="days">доставка 3 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/rexant-patron-e27-podvesnoy-s-klemmnoy-kolodkoy-773993397/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/kolodka.webp" alt="Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Клеммная колодка</span>
+          <h3>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В</h3>
+          <p class="specs">Винтовая, 8 контактов, 15 А</p>
+          <p class="note">Соединять провода: вставил жилу — затянул винт</p>
+          <div class="row">
+            <span class="price">119 ₽</span>
+            <span class="days">доставка 1 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/klemmnaya-kolodka-vintovaya-s-kryshkoy-8-kontaktov-15-a-600-v-3245596810/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/holder.webp" alt="Держатель предохранителя 10А Стандарт со шнуром 300мм 1,25 кв.мм" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Держатель предохранителя</span>
+          <h3>Держатель предохранителя 10А Стандарт со шнуром 300мм 1,25 кв.мм</h3>
+          <p class="specs">10 А, флажковый, с готовым шнуром 300 мм</p>
+          <p class="note">Ставится в плюсовой провод от аккумулятора — защита от короткого замыкания</p>
+          <div class="row">
+            <span class="price">114 ₽</span>
+            <span class="days">доставка 6 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/derzhatel-predohranitelya-10a-standart-so-shnurom-300mm-1-25-kv-mm-2486761095/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/fuses.webp" alt="Набор предохранителей флажковых для автомобиля 10шт 7,5-30 А" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Набор предохранителей</span>
+          <h3>Набор предохранителей флажковых для автомобиля 10шт 7,5-30 А</h3>
+          <p class="specs">Флажковые 10 шт, 7,5–30 А</p>
+          <p class="note">Запасные: возьми 5 А или 7,5 А для панели 30 Вт</p>
+          <div class="row">
+            <span class="price">61 ₽</span>
+            <span class="days">доставка 1 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/nabor-predohraniteley-flazhkovyh-dlya-avtomobilya-10sht-7-5-30-a-4896138827/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/crocodile.webp" alt="Зажим &quot;крокодил&quot;, 30 А, длина 70 мм (комплект 2 шт.) / Зажимы крокодилы для пров" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Зажимы-крокодилы</span>
+          <h3>Зажим &quot;крокодил&quot;, 30 А, длина 70 мм (комплект 2 шт.) / Зажимы крокодилы для проводов</h3>
+          <p class="specs">30 А, комплект 2 шт (красный и чёрный)</p>
+          <p class="note">Зацепить провода за клеммы аккумулятора без инструмента</p>
+          <div class="row">
+            <span class="price">107 ₽</span>
+            <span class="days">доставка 1 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/zazhim-krokodil-30-a-dlina-70-mm-komplekt-2-sht-zazhimy-krokodily-dlya-provodov-786086801/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/wire_b.webp" alt="Провод ПуГВ 1.5 синий медный многожильный (3м)" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Провод (минус)</span>
+          <h3>Провод ПуГВ 1.5 синий медный многожильный (3м)</h3>
+          <p class="specs">ПуГВ 1,5 мм², 3 м, синий</p>
+          <p class="note">Медный многожильный, 1,5 мм² хватает с запасом</p>
+          <div class="row">
+            <span class="price">122 ₽</span>
+            <span class="days">доставка 7 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/provod-pugv-1-5-siniy-mednyy-mnogozhilnyy-3m-4998179474/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"><img src="img/wire_w.webp" alt="Провод ПуГВ 1,5 белый медный многожильный (3м)" loading="lazy"></div>
+        <div class="card-body">
+          <span class="role">Провод (плюс)</span>
+          <h3>Провод ПуГВ 1,5 белый медный многожильный (3м)</h3>
+          <p class="specs">ПуГВ 1,5 мм², 3 м, белый</p>
+          <p class="note">Второй провод линии</p>
+          <div class="row">
+            <span class="price">138 ₽</span>
+            <span class="days">доставка 7 дн.</span>
+          </div>
+          <a class="btn" href="https://www.ozon.ru/product/provod-pugv-1-5-belyy-mednyy-mnogozhilnyy-3m-4998160469/" target="_blank" rel="noopener">Открыть на Ozon</a>
+        </div>
+      </article>
+</div>
+
+<h3>Смета</h3>
+<table>
+  <tr><th>Роль</th><th>Товар</th><th>Цена</th><th>Доставка</th></tr>
+  <tr><td>Солнечная панель + контроллер</td><td>Солнечная панель мощностью 30 Вт, 12 В, генератор на перезаряжаемых ба</td><td class='num'>1,415 ₽</td><td class='num'>1 дн.</td></tr>
+<tr><td>Аккумулятор</td><td>Аккумулятор для опрыскивателя 12В 7Ач</td><td class='num'>723 ₽</td><td class='num'>5 дн.</td></tr>
+<tr><td>Фотореле</td><td>Регулятор освещения ФР-08 (фотореле 12 В / 10 А)</td><td class='num'>222 ₽</td><td class='num'>6 дн.</td></tr>
+<tr><td>Лампа</td><td>Лампочка Светодиодная Низковольтная 12 вольт 5 ватт цоколь E27 4000K</td><td class='num'>271 ₽</td><td class='num'>4 дн.</td></tr>
+<tr><td>Патрон</td><td>REXANT Патрон E27 подвесной с клеммной колодкой</td><td class='num'>91 ₽</td><td class='num'>3 дн.</td></tr>
+<tr><td>Клеммная колодка</td><td>Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В</td><td class='num'>119 ₽</td><td class='num'>1 дн.</td></tr>
+<tr><td>Держатель предохранителя</td><td>Держатель предохранителя 10А Стандарт со шнуром 300мм 1,25 кв.мм</td><td class='num'>114 ₽</td><td class='num'>6 дн.</td></tr>
+<tr><td>Набор предохранителей</td><td>Набор предохранителей флажковых для автомобиля 10шт 7,5-30 А</td><td class='num'>61 ₽</td><td class='num'>1 дн.</td></tr>
+<tr><td>Зажимы-крокодилы</td><td>Зажим &quot;крокодил&quot;, 30 А, длина 70 мм (комплект 2 шт.) / Зажимы крокодил</td><td class='num'>107 ₽</td><td class='num'>1 дн.</td></tr>
+<tr><td>Провод (минус)</td><td>Провод ПуГВ 1.5 синий медный многожильный (3м)</td><td class='num'>122 ₽</td><td class='num'>7 дн.</td></tr>
+<tr><td>Провод (плюс)</td><td>Провод ПуГВ 1,5 белый медный многожильный (3м)</td><td class='num'>138 ₽</td><td class='num'>7 дн.</td></tr>
+  <tr class="total"><td colspan="2">Итого</td><td class="num">3,383 ₽</td><td></td></tr>
+</table>
+
+<h2>Сборка без пайки — по шагам</h2>
+<ol class="steps">
+  <li><b>Подготовь место.</b> Сухая полка или ящик рядом с окном/на балконе. Аккумулятор — не на
+      морозе и не в сырости: свинцовому AGM комфортно при 10–25 °C, на холоде он теряет ёмкость.</li>
+  <li><b>Разложи провода до подключения.</b> Панель и аккумулятор должны быть отключены —
+      собираем «на сухую», проверяя, что провода дотягиваются до клемм.</li>
+  <li><b>Аккумулятор → контроллер.</b> Сначала минус, потом плюс. Провод от АКБ зачисти на 8–10 мм,
+      вставь в клемму <code>BAT</code> и затяни винт. Никакой пайки: винтовой зажим держит
+      надёжнее, чем скрутка.</li>
+  <li><b>В плюсовом проводе от аккумулятора поставь предохранитель 5 А</b> — держатель
+      с винтовыми зажимами или колодку с предохранителем. Это защита от короткого замыкания.</li>
+  <li><b>Панель → контроллер.</b> Клеммы <code>PV+</code> и <code>PV−</code>. Панель на солнце
+      сразу даёт напряжение, поэтому её подключают последней и обязательно с соблюдением полярности.</li>
+  <li><b>Лампа → фотореле → контроллер.</b> Плюс с клеммы <code>LOAD+</code> идёт на вход фотореле,
+      с выхода фотореле — на патрон лампы. Минус идёт напрямую с <code>LOAD−</code> на второй провод
+      патрона. Все соединения — в клеммных колодках.</li>
+  <li><b>Настрой режим контроллера.</b> Кнопками на контроллере выбери режим нагрузки:
+      «светоконтроль» (включение по темноте) и таймер <b>6 часов</b>. Если оставить «всегда
+      включено», лампа будет гореть и днём, а аккумулятор разрядится за одну ночь.
+      Пара «светоконтроль + 6 ч» — это и есть «горит, когда уходит солнце».</li>
+  <li><b>Проверь и включи.</b> Убедись, что нигде нет перепутанных полюсов. Контроллер включится
+      и покажет напряжение аккумулятора. Прикрой фотореле рукой или накрой коробкой — лампа
+      должна загореться через несколько секунд. Открыл — гаснет.</li>
+  <li><b>Закрепи и спрячь от воды.</b> Панель — под углом к солнцу (в Петербурге лучше
+      на юг и под углом ~45°), контроллер и аккумулятор — в сухом боксе, провода — в гофре
+      или кабель-канале.</li>
+  <li><b>Отключение — в обратном порядке:</b> сначала панель, потом нагрузка, в конце аккумулятор.
+      Так контроллер и аккумулятор не пострадают.</li>
+</ol>
+
+<div class="box warn">
+  <b>Три ошибки, которые убивают систему.</b>
+  Первая — перепутать плюс и минус: контроллер выходит из строя сразу, проверяй дважды.
+  Вторая — оставлять аккумулятор разряженным «в ноль»: свинцовый АКБ от глубокого разряда
+  теряет ёмкость навсегда, поэтому разряжать его больше чем наполовину нельзя, а на зиму
+  лучше дозаряжать от сети. Третья — ставить панель и контроллер под дождь: панель герметична,
+  а вот электроника и клеммы — нет.
+</div>
+
+<h2>Эксплуатация</h2>
+<table>
+  <tr><th>Что</th><th>Как часто</th><th>Зачем</th></tr>
+  <tr><td>Протереть панель</td><td>раз в 1–2 недели</td><td>пыль и снег срезают выработку на 20–40%</td></tr>
+  <tr><td>Проверить напряжение АКБ</td><td>раз в месяц</td><td>ниже 11,8 В под нагрузкой — пора дозарядить</td></tr>
+  <tr><td>Протянуть винты клемм</td><td>раз в сезон</td><td>винтовые соединения со временем ослабевают</td></tr>
+  <tr><td>Дозарядить АКБ от сети</td><td>в декабре–январе</td><td>солнца физически не хватает, АКБ иначе засульфатируется</td></tr>
+</table>
+
+<h2>Что улучшить, когда захочешь больше</h2>
+<ul>
+  <li><b>Второй такой же аккумулятор</b> (7 А·ч) параллельно первому — тогда лампа
+      сможет гореть всю ночь, а не 6 часов: ёмкость станет 14 А·ч, полезно
+      84 Вт·ч. Соединять однотипные АКБ: плюс к плюсу, минус к минусу,
+      провода одинаковой длины.</li>
+  <li><b>Вторая панель</b> (30+30 Вт) — вдвое больше выработки, зимой заметнее всего.</li>
+  <li><b>MPPT-контроллер вместо PWM</b> — те же панели дают на 10–30% больше энергии, но дороже.</li>
+  <li><b>LiFePO4 вместо AGM</b> — можно разряжать до 90%, легче и живёт в разы дольше;
+      дороже в 2–3 раза, но при ежедневной работе окупается.</li>
+  <li><b>Контроллер с режимом «светоконтроль»</b> — тогда отдельное фотореле не нужно, но такие
+      модели чаще приходят с долгой доставкой.</li>
+</ul>
+
+<footer>
+  Цены и наличие — Ozon, 19.09.2026, фильтр «доставка до 7 дней». Фотографии товаров принадлежат
+  продавцам на Ozon и приведены здесь как иллюстрации к конкретным позициям со ссылками на страницы
+  товаров. Расчёты сделаны для лампы 5 Вт и Санкт-Петербурга; для другого города
+  цифры по панели изменятся (нужно своё число солнечных часов).
+</footer>
+
+</div>
+</body>
+</html>

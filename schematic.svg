@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="Схема подключения: солнечная панель, контроллер, аккумулятор, фотореле и лампа">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .box{fill:#111827;stroke:#334155;stroke-width:2;rx:10}
+      .lbl{fill:#e2e8f0;font-size:15px;font-weight:600}
+      .sub{fill:#94a3b8;font-size:12.5px}
+      .term{fill:#0f172a;stroke:#475569;stroke-width:1.5}
+      .tname{fill:#cbd5e1;font-size:11.5px;font-family:ui-monospace,Consolas,monospace}
+      .wirep{stroke:#ef4444;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wiren{stroke:#1f2937;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wirel{stroke:#f59e0b;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .note{fill:#94a3b8;font-size:12px}
+      .frame{fill:none;stroke:#1e293b;stroke-width:1.5;stroke-dasharray:6 6}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="560" fill="#0b1220"/>
+  <text x="24" y="34" class="lbl" font-size="18">Схема подключения — 12 В, всё на винтовых клеммах (без пайки)</text>
+  <text x="24" y="56" class="sub">Красный — плюс, чёрный — минус, жёлтый — линия нагрузки. Полярность перепутать нельзя: контроллер выйдет из строя.</text>
+
+  <!-- Солнечная панель -->
+  <g>
+    <rect x="24" y="96" width="216" height="126" rx="10" class="box"/>
+    <text x="132" y="126" text-anchor="middle" class="lbl">Солнечная панель</text>
+    <text x="132" y="148" text-anchor="middle" class="sub">12 В, 30–50 Вт</text>
+    <text x="132" y="168" text-anchor="middle" class="sub">выход: 2 провода</text>
+    <rect x="52" y="188" width="46" height="22" rx="4" class="term"/><text x="75" y="204" text-anchor="middle" class="tname">+</text>
+    <rect x="158" y="188" width="46" height="22" rx="4" class="term"/><text x="181" y="204" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Контроллер -->
+  <g>
+    <rect x="352" y="88" width="240" height="230" rx="10" class="box"/>
+    <text x="472" y="118" text-anchor="middle" class="lbl">PWM-контроллер заряда</text>
+    <text x="472" y="140" text-anchor="middle" class="sub">12/24 В, 10–20 А</text>
+    <text x="472" y="158" text-anchor="middle" class="sub">с датчиком света и таймером</text>
+
+    <text x="368" y="190" class="tname">PV +</text>
+    <rect x="352" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="368" y="238" class="tname">PV −</text>
+    <rect x="352" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="430" y="190" class="tname">BAT +</text>
+    <rect x="424" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="430" y="238" class="tname">BAT −</text>
+    <rect x="424" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="500" y="190" class="tname">LOAD +</text>
+    <rect x="496" y="196" width="60" height="20" rx="4" class="term"/>
+    <text x="500" y="238" class="tname">LOAD −</text>
+    <rect x="496" y="244" width="60" height="20" rx="4" class="term"/>
+    <text x="472" y="296" text-anchor="middle" class="sub">клеммы винтовые: жила зажимается винтом</text>
+  </g>
+
+  <!-- Аккумулятор -->
+  <g>
+    <rect x="700" y="96" width="216" height="126" rx="10" class="box"/>
+    <text x="808" y="126" text-anchor="middle" class="lbl">Аккумулятор 12 В</text>
+    <text x="808" y="148" text-anchor="middle" class="sub">AGM/SLA, 12–24 А·ч</text>
+    <text x="808" y="168" text-anchor="middle" class="sub">болтовые клеммы</text>
+    <rect x="728" y="188" width="46" height="22" rx="4" class="term"/><text x="751" y="204" text-anchor="middle" class="tname">+</text>
+    <rect x="842" y="188" width="46" height="22" rx="4" class="term"/><text x="865" y="204" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Лампа -->
+  <g>
+    <rect x="352" y="392" width="240" height="120" rx="10" class="box"/>
+    <text x="472" y="422" text-anchor="middle" class="lbl">Лампа 12 В LED</text>
+    <text x="472" y="444" text-anchor="middle" class="sub">E27 в патроне с проводами</text>
+    <text x="472" y="458" text-anchor="middle" class="sub">или готовый светильник 12 В</text>
+    <rect x="368" y="478" width="46" height="20" rx="4" class="term"/><text x="391" y="492" text-anchor="middle" class="tname">+</text>
+    <rect x="530" y="478" width="46" height="20" rx="4" class="term"/><text x="553" y="492" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Фотореле -->
+  <g>
+    <rect x="700" y="392" width="216" height="120" rx="10" class="box"/>
+    <text x="808" y="422" text-anchor="middle" class="lbl">Фотореле 12 В</text>
+    <text x="808" y="444" text-anchor="middle" class="sub">замыкает цепь</text>
+    <text x="808" y="462" text-anchor="middle" class="sub">когда стемнеет</text>
+    <text x="808" y="486" text-anchor="middle" class="note">вход + / − , выход + / −</text>
+  </g>
+
+  <!-- Провода: панель → контроллер -->
+  <path class="wirep" d="M98 188 C 98 150, 300 150, 352 206" marker-end="url(#arr)"/>
+  <path class="wiren" d="M204 188 C 204 250, 300 260, 352 254" marker-end="url(#arr)"/>
+  <text x="214" y="138" class="note">панель → PV</text>
+
+  <!-- Провода: контроллер → АКБ -->
+  <path class="wirep" d="M484 196 C 600 160, 680 170, 751 188" marker-end="url(#arr)"/>
+  <path class="wiren" d="M484 254 C 620 290, 700 260, 865 188" marker-end="url(#arr)"/>
+  <text x="596" y="148" class="note">контроллер → АКБ</text>
+  <text x="560" y="316" class="note">предохранитель 5–15 А в плюсовом проводе</text>
+  <circle cx="628" cy="196" r="7" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="642" y="200" class="note" fill="#f59e0b">FU</text>
+
+  <!-- Провода: контроллер → фотореле → лампа -->
+  <path class="wirel" d="M556 206 C 640 300, 700 330, 808 392" marker-end="url(#arr)"/>
+  <path class="wirel" d="M808 512 C 808 552, 700 552, 610 546 C 580 544, 566 520, 553 486" marker-end="url(#arr)"/>
+  <path class="wirel" d="M391 478 C 391 440, 430 430, 472 512" marker-end="url(#arr)"/>
+  <text x="560" y="342" class="note" fill="#f59e0b">LOAD → фотореле → лампа</text>
+
+  <rect x="24" y="392" width="290" height="120" rx="10" class="frame"/>
+  <text x="40" y="418" class="lbl" font-size="14">Порядок подключения</text>
+  <text x="40" y="440" class="sub">1. АКБ → контроллер (сначала минус)</text>
+  <text x="40" y="460" class="sub">2. Панель → контроллер</text>
+  <text x="40" y="480" class="sub">3. Лампа → LOAD (через фотореле)</text>
+  <text x="40" y="500" class="sub">4. Отключать в обратном порядке</text>
+</svg>
