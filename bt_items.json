@@ -100,18 +100,18 @@
    "img_local": "img/bt3_tp.jpg"
   },
   {
-   "key": "term",
-   "role": "Клеммная колодка",
+   "key": "ph",
+   "role": "Кабель питания",
    "qty": 1,
-   "title": "Клеммная колодка винтовая с крышкой, 8 контактов, 15 А, 600 В",
-   "price": 119,
+   "title": "Кабель JST PH2.0, 2 контакта, 30 см (штекер + ответная часть)",
+   "price": 190,
    "days": 1,
    "rating": 4.9,
-   "reviews": 863,
-   "specs": "винтовая, 8 контактов, 15 А",
-   "how": "Сюда зажимаются провода отсека и платы зарядки: плюс → B+, минус → B−",
-   "url": "https://www.ozon.ru/product/klemmnaya-kolodka-vintovaya-s-kryshkoy-8-kontaktov-15-a-600-v-3245596810/",
-   "img_local": "img/bt3_term.jpg"
+   "reviews": 3668,
+   "specs": "PH2.0 — тот же разъём, что на плате-переходнике; длина 30 см",
+   "how": "Один конец припаивается к выходу платы зарядки, второй щёлкает в гнездо переходника",
+   "url": "https://www.ozon.ru/product/jst-ph-2-0mm-2pin-kabel-s-razemom-30sm-razem-na-platu-jst-ph-2pin-5sht-1852941745/",
+   "img_local": "img/bt3_phcable.jpg"
   }
  ],
  "why_no_board": {
