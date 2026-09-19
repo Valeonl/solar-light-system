@@ -5,7 +5,7 @@
    "key": "esp",
    "role": "Микроконтроллер",
    "qty": 1,
-   "title": "ESP32-C3 Super Mini Отладочная плата на базе микроконтроллера ESP32-C3, type-C",
+   "title": "ESP32-C3 Super Mini, отладочная плата (Wi-Fi + Bluetooth)",
    "price": 446,
    "days": 1,
    "rating": 4.9,
@@ -14,6 +14,20 @@
    "how": "Гребёнки ножек идут в комплекте и НЕ распаяны — это единственная пайка в сборке (2 планки, ~5 минут)",
    "url": "https://www.ozon.ru/product/esp32-c3-super-mini-otladochnaya-plata-na-baze-mikrokontrollera-esp32-c3-type-c-3468709710/",
    "img_local": "img/bt3_esp.jpg"
+  },
+  {
+   "key": "exp",
+   "role": "Плата-переходник",
+   "qty": 1,
+   "title": "Плата расширения для ESP32-C3 Super Mini: разводка GPIO, гнёзда и гнездо аккумулятора",
+   "price": 264,
+   "days": 1,
+   "rating": 4.7,
+   "reviews": 209,
+   "specs": "гнёзда для модуля, штырьки GPIO, гнездо PH2.0 для аккумулятора",
+   "how": "Сюда вставляется модуль ножками, а в гнездо — разъём батарейного отсека: макетная плата не нужна",
+   "url": "https://www.ozon.ru/product/plata-rasshireniya-dlya-esp32-c3-super-mini-1926407913/",
+   "img_local": "img/bt2_exp.webp"
   },
   {
    "key": "oled",
@@ -30,20 +44,6 @@
    "img_local": "img/bt3_oled.jpg"
   },
   {
-   "key": "brd",
-   "role": "Основа для соединений",
-   "qty": 1,
-   "title": "Беспаечная макетная плата Arduino 400 точек (BREADBOARD) для конструирования робототехники",
-   "price": 175,
-   "days": 1,
-   "rating": 4.9,
-   "reviews": 831,
-   "specs": "беспаечная макетная плата, 400 точек",
-   "how": "Держит плату, экран и провода: соединения не болтаются, паять не нужно",
-   "url": "https://www.ozon.ru/product/bespaechnaya-maketnaya-plata-arduino-400-tochek-breadboard-dlya-konstruirovaniya-robototehniki-5539568992/",
-   "img_local": "img/bt3_brd.jpg"
-  },
-  {
    "key": "wr",
    "role": "Провода",
    "qty": 1,
@@ -53,7 +53,7 @@
    "rating": 4.9,
    "reviews": 665,
    "specs": "Dupont «мама-мама», 10 см, 40 штук",
-   "how": "Нужно 6 штук (4 на экран, 2 на питание) — набора хватает с большим запасом",
+   "how": "6 штук — 4 на дисплей и 2 на питание; набрать нужную длину можно, не резая: длины 10 см хватает",
    "url": "https://www.ozon.ru/product/provod-soedinitelnyy-mama-mama-dupont-10-sm-40-sht-2805912312/",
    "img_local": "img/bt3_wr.jpg"
   },
@@ -118,5 +118,16 @@
   "case_price": 485,
   "real_board_price": 3594,
   "s3_kit_rating": 1.0
- }
+ },
+ "optional": [
+  {
+   "key": "brd",
+   "title": "Беспаечная макетная плата 400 точек",
+   "price": 175,
+   "days": 1,
+   "rating": 4.9,
+   "reviews": 831,
+   "note": "нужна только если собирать без платы-переходника"
+  }
+ ]
 }
