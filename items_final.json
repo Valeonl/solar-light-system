@@ -135,33 +135,18 @@
   "reviews": 27703
  },
  {
-  "key": "wire_b",
-  "role": "Провод (минус)",
-  "title": "Провод ПуГВ 1.5 синий медный многожильный (3м)",
-  "price": 122,
-  "days": 7,
-  "delivery": "7 дн.",
-  "specs": "ПуГВ 1,5 мм², 3 м, синий",
-  "note": "Медный многожильный, 1,5 мм² хватает с запасом",
-  "url": "https://www.ozon.ru/product/provod-pugv-1-5-siniy-mednyy-mnogozhilnyy-3m-4998179474/",
-  "img": "https://ir.ozone.ru/s3/multimedia-1-x/wc500/12312833613.jpg",
-  "img_local": "img/wire_b.webp",
-  "rating": 3.0,
-  "reviews": 2
- },
- {
-  "key": "wire_w",
-  "role": "Провод (плюс)",
-  "title": "Провод ПуГВ 1,5 белый медный многожильный (3м)",
-  "price": 138,
-  "days": 7,
-  "delivery": "7 дн.",
-  "specs": "ПуГВ 1,5 мм², 3 м, белый",
-  "note": "Второй провод линии",
-  "url": "https://www.ozon.ru/product/provod-pugv-1-5-belyy-mednyy-mnogozhilnyy-3m-4998160469/",
-  "img": "https://ir.ozone.ru/s3/multimedia-1-a/wc500/12313011646.jpg",
-  "img_local": "img/wire_w.webp",
-  "rating": 4.0,
-  "reviews": 1
+  "key": "cable",
+  "role": "Кабель (плюс и минус)",
+  "title": "Кабель акустический двужильный 2х1,5 длина 3 метров; провода для автозвука; акустический провод ШВПМ",
+  "price": 252,
+  "days": 1,
+  "delivery": "1 дн.",
+  "rating": 4.9,
+  "reviews": 9568,
+  "specs": "Двужильный медный кабель 2×1,5 мм², 3 метра",
+  "note": "Один кабель вместо двух проводов: жилы идут на плюс и минус, сечение 1,5 мм² с запасом по току",
+  "url": "https://www.ozon.ru/product/kabel-akusticheskiy-dvuzhilnyy-2h1-5-dlina-3-metrov-provoda-dlya-avtozvuka-akusticheskiy-2625432453/",
+  "img": "https://ir.ozone.ru/s3/multimedia-1-6/wc500/10860587970.jpg",
+  "img_local": "img/cable.webp"
  }
 ]
