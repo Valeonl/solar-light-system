@@ -70,6 +70,11 @@ C = calc()
 TOTAL = sum(i["price"] for i in ITEMS)
 
 
+def money(n: int) -> str:
+    """Русский формат: 3368 → «3 368»."""
+    return f"{n:,}".replace(",", "\u00a0")
+
+
 def item_card(i: dict) -> str:
     img = html.escape(i.get("img_local") or "")
     return f"""
@@ -81,7 +86,7 @@ def item_card(i: dict) -> str:
           <p class="specs">{html.escape(i.get('specs', ''))}</p>
           <p class="note">{html.escape(i.get('note', ''))}</p>
           <div class="row">
-            <span class="price">{i['price']:,} ₽</span>
+            <span class="price">{money(i['price'])} ₽</span>
             <span class="days">доставка {i.get('delivery') or str(i.get('days')) + ' дн.'}</span>
           </div>
           <a class="btn" href="{html.escape(i['url'])}" target="_blank" rel="noopener">Открыть на Ozon</a>
@@ -91,7 +96,7 @@ def item_card(i: dict) -> str:
 
 def item_row(i: dict) -> str:
     return (f"<tr><td>{html.escape(i['role'])}</td><td>{html.escape(i['title'][:70])}</td>"
-            f"<td class='num'>{i['price']:,} ₽</td>"
+            f"<td class='num'>{money(i['price'])} ₽</td>"
             f"<td class='num'>{html.escape(str(i.get('delivery') or ''))}</td></tr>")
 
 
@@ -189,12 +194,18 @@ HTML = f"""<!DOCTYPE html>
   Никакой пайки: все соединения на винтовых клеммах и болтах. Цены и сроки доставки — Ozon,
   на {PRICE_DATE}.</p>
   <div class="kpis">
-    <div class="kpi"><b>{TOTAL:,} ₽</b><span>весь комплект по этому списку</span></div>
+    <div class="kpi"><b>{money(TOTAL)} ₽</b><span>весь комплект по этому списку</span></div>
     <div class="kpi"><b>{LAMP_W:.0f} Вт</b><span>лампа; 6 часов после заката = {C['e_timer']:.0f} Вт·ч в сутки</span></div>
     <div class="kpi"><b>{C['autonomy_timer']:.1f} сут</b><span>автономия на АКБ {BATTERY_AH} А·ч в режиме 6 часов</span></div>
     <div class="kpi"><b>{PANEL_W} Вт</b><span>панель даёт {C['harvest_autumn']:.0f} Вт·ч в сутки в сентябре–октябре</span></div>
   </div>
 </header>
+
+<div class="box ok">
+  <b>Есть бюджетный вариант.</b> Если задача — просто «свет включается сам при темноте»
+  и бюджет до 1000 ₽, посмотрите <a href="budget.html"><b>готовые светильники на солнечной батарее
+  от 132 ₽</b></a> — там та же функция без сборки и за меньшие деньги.
+</div>
 
 <h2>Как это работает</h2>
 <ol>
@@ -278,7 +289,7 @@ HTML = f"""<!DOCTYPE html>
 <table>
   <tr><th>Роль</th><th>Товар</th><th>Цена</th><th>Доставка</th></tr>
   {rows}
-  <tr class="total"><td colspan="2">Итого</td><td class="num">{TOTAL:,} ₽</td><td></td></tr>
+  <tr class="total"><td colspan="2">Итого</td><td class="num">{money(TOTAL)} ₽</td><td></td></tr>
 </table>
 
 <h2>Сборка без пайки — по шагам</h2>
@@ -362,4 +373,4 @@ if __name__ == "__main__":
     svg = svg.replace('<svg ', '<svg style="display:block" ', 1)
     out = HTML.replace("{SVG_SCHEMA}", svg)
     (BASE / "index.html").write_text(out, encoding="utf-8")
-    print(f"index.html записан: {len(out):,} байт, товаров {len(ITEMS)}, итого {TOTAL:,} ₽")
+    print(f"index.html записан: {len(out):,} байт, товаров {len(ITEMS)}, итого {money(TOTAL)} ₽")

@@ -1,0 +1,139 @@
+{
+ "date": "19.09.2026",
+ "ready": [
+  {
+   "key": "lamp132",
+   "role": "Готовый светильник",
+   "title": "Светильник летний садовый на солнечной батарее, 4.5х30х4.5 см, 1 LED, свечение белое",
+   "price": 132,
+   "days": 5,
+   "specs": "1 светодиод, панель и аккумулятор внутри",
+   "note": "Достаточно воткнуть в землю — светит сам с наступлением темноты",
+   "url": "https://www.ozon.ru/product/svetilnik-letniy-sadovyy-na-solnechnoy-bataree-4-5h30h4-5-sm-1-led-svechenie-beloe-2150573373/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-c/wc500/7551804468.jpg",
+   "img_local": "img/b_lamp132.webp"
+  },
+  {
+   "key": "demmax",
+   "role": "Готовый светильник",
+   "title": "Светильник садовый на солнечной батарее уличный Demmax, 1 шт",
+   "price": 204,
+   "days": 1,
+   "specs": "1 светодиод, корпус из стали",
+   "note": "Приезжает на следующий день, если не хочешь ждать",
+   "url": "https://www.ozon.ru/product/svetilnik-sadovyy-na-solnechnoy-bataree-ulichnyy-demmax-1-sht-1991186826/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-n/wc500/7433093039.jpg",
+   "img_local": "img/b_demmax.webp"
+  },
+  {
+   "key": "spot660",
+   "role": "Яркий вариант",
+   "title": "Уличный светильник-ночник прожекторна пульте на солнечной батарее с датчиком движения защищен от дождя подвесн",
+   "price": 660,
+   "days": 1,
+   "specs": "прожектор с пультом и датчиком движения, своя панель",
+   "note": "Светит заметно сильнее декоративного светильника; вешается на стену",
+   "url": "https://www.ozon.ru/product/ulichnyy-svetilnik-nochnik-prozhektorna-pulte-na-solnechnoy-bataree-s-datchikom-dvizheniya-1977175785/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/7420875367.jpg",
+   "img_local": "img/b_spot660.webp"
+  }
+ ],
+ "diy": [
+  {
+   "key": "panel",
+   "role": "Панель",
+   "title": "Мини солнечная панель 6 В 1 Вт 110*60 мм поликристаллическая для DIY, светильника, робота и мини-мотора",
+   "price": 435,
+   "days": 1,
+   "specs": "6 В, 1 Вт, 110×60 мм, с проводами",
+   "note": "Хватает на один светодиод",
+   "url": "https://www.ozon.ru/product/mini-solnechnaya-panel-6-v-1-vt-110-60-mm-polikristallicheskaya-dlya-diy-svetilnika-robota-i-1339298552/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/13750316743.jpg",
+   "img_local": "img/b_panel.webp"
+  },
+  {
+   "key": "tp4056",
+   "role": "Плата зарядки",
+   "title": "Модуль заряда Li-ion аккумуляторов TP4056 (с защитой), гнездо Micro USB 5В 1А, Интеграционная Плата Контроллер",
+   "price": 65,
+   "days": 1,
+   "specs": "TP4056, 5 В, с защитой и Micro-USB",
+   "note": "Заряжает аккумулятор от панели и защищает от переразряда",
+   "url": "https://www.ozon.ru/product/modul-zaryada-li-ion-akkumulyatorov-tp4056-s-zashchitoy-gnezdo-micro-usb-5v-1a-623144039/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-2/wc500/7365424106.jpg",
+   "img_local": "img/b_tp4056.webp"
+  },
+  {
+   "key": "cell",
+   "role": "Аккумулятор",
+   "title": "Аккумулятор 18650, плоский пин, Smartbuy, 3.7 V, 2200 мАч, 1 шт",
+   "price": 146,
+   "days": 1,
+   "specs": "18650, 3,7 В, 2200 мА·ч",
+   "note": "Ёмкость даёт запас примерно на 5–6 ночей работы одного светодиода",
+   "url": "https://www.ozon.ru/product/akkumulyator-18650-ploskiy-pin-smartbuy-3-7-v-2200-mach-1-sht-1680923342/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-5/wc500/7656066041.jpg",
+   "img_local": "img/b_cell.webp"
+  },
+  {
+   "key": "holder",
+   "role": "Держатель",
+   "title": "Держатель 18650 холдер. Батарейный отсек 18650. Для 1шт под пайку.",
+   "price": 99,
+   "days": 5,
+   "specs": "холдер на 1 элемент 18650",
+   "note": "Чтобы аккумулятор не пришлось припаивать",
+   "url": "https://www.ozon.ru/product/derzhatel-18650-holder-batareynyy-otsek-18650-dlya-1sht-pod-payku-4100392561/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-l/wc500/10081206201.jpg",
+   "img_local": "img/b_holder.webp"
+  },
+  {
+   "key": "lightmod",
+   "role": "Датчик света",
+   "title": "Датчик света на фоторезисторе, пороговый",
+   "price": 108,
+   "days": 1,
+   "specs": "модуль с порогом срабатывания",
+   "note": "Это и есть «включатель по темноте»: даёт сигнал, когда стемнело",
+   "url": "https://www.ozon.ru/product/datchik-sveta-na-fotorezistore-porogovyy-4414515648/",
+   "img": "https://ir.ozone.ru/s3/multimedia-y/wc500/6069495946.jpg",
+   "img_local": "img/b_lightmod.webp"
+  },
+  {
+   "key": "relay",
+   "role": "Реле",
+   "title": "Модуль реле - 5 вольт 1 реле Ардуин",
+   "price": 76,
+   "days": 3,
+   "specs": "модуль реле 5 В, 1 канал",
+   "note": "Замыкает цепь светодиода по сигналу датчика",
+   "url": "https://www.ozon.ru/product/modul-rele-5-volt-1-rele-arduin-3329408957/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-t/wc500/8701997105.jpg",
+   "img_local": "img/b_relay.webp"
+  },
+  {
+   "key": "usbled",
+   "role": "Светодиод",
+   "title": "Компактный светодиодный USB светильник для ноутбука 3LED B41 теплый, 3-5В (Белый)",
+   "price": 79,
+   "days": 1,
+   "specs": "3 светодиода, 3–5 В, USB",
+   "note": "Самый дешёвый готовый «светодиодик» с проводами",
+   "url": "https://www.ozon.ru/product/kompaktnyy-svetodiodnyy-usb-svetilnik-dlya-noutbuka-3led-b41-teplyy-3-5v-belyy-3910049621/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-r/wc500/9376311951.jpg",
+   "img_local": "img/b_usbled.webp"
+  },
+  {
+   "key": "wires",
+   "role": "Провода",
+   "title": "Провод соединительный мама-мама \"Dupont\", 10 см, 40 шт",
+   "price": 124,
+   "days": 1,
+   "specs": "Dupont «мама-мама», 40 шт",
+   "note": "Без них модули не соединить — это и есть «без пайки»",
+   "url": "https://www.ozon.ru/product/provod-soedinitelnyy-mama-mama-dupont-10-sm-40-sht-2805912312/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-v/wc500/7941361675.jpg",
+   "img_local": "img/b_wires.webp"
+  }
+ ]
+}
