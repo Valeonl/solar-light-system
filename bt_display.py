@@ -14,6 +14,11 @@ BASE = pathlib.Path(__file__).parent
 D = json.loads((BASE / "bt_items.json").read_text(encoding="utf-8"))
 BUILD = D["build"]
 OPT = {i["key"]: i for i in D.get("optional", [])}
+for _o in OPT.values():
+    _o.setdefault("role", "Опция")
+    _o.setdefault("qty", 1)
+    _o.setdefault("rating", None)
+    _o.setdefault("reviews", None)
 WHY = D["why_no_board"]
 PRICE_DATE = D["date"]
 
@@ -62,6 +67,8 @@ def card(i: dict) -> str:
         f'          <a class="btn" href="{i["url"]}" target="_blank" rel="noopener">Открыть на Ozon</a>\n'
         '        </div>\n      </article>')
 
+
+opt_cards = "\n".join(card(i) for i in OPT.values())
 
 rows = "\n".join(
     f"<tr><td>{i['role']}</td><td>{i['title'][:56]}</td>"
@@ -158,13 +165,18 @@ Bluetooth. Собирается почти без пайки: у экрана н
 {cards}
 </div>
 
+<h3>Опции: что докупить по желанию</h3>
+<div class="grid">
+{opt_cards}
+</div>
+
 <h3>Смета</h3>
 <table>
   <tr><th>Роль</th><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Итого</th><th>Доставка</th><th>Отзывы</th></tr>
   {rows}
   <tr class="total"><td colspan="4">Всего</td><td class="num">{money(TOTAL)} ₽</td><td></td><td></td></tr>
 </table>
-<p><b>Опция, если хочется другой путь:</b> {{OPT_BRD_TITLE}} — {{OPT_BRD_PRICE}} ₽ (★{{OPT_BRD_RATING}}, {{OPT_BRD_REVIEWS}} отзывов) — {{OPT_BRD_NOTE}}.</p>
+<p>Опции в основную смету не входят и покупаются отдельно — каждая со своей ссылкой.</p>
 <p>Количества указаны явно: в наборе проводов 40 штук, а нужно 6 — одного набора хватит с запасом;
 остальные позиции берутся по одной.</p>
 
@@ -375,7 +387,7 @@ HTML = ('<!DOCTYPE html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n'
 if __name__ == "__main__":
     svg = (BASE / "bt_schematic.svg").read_text(encoding="utf-8")
     wiring = (BASE / "bt_wiring.svg").read_text(encoding="utf-8")
-    out = (HTML.replace("{SVG_SCHEMA}", svg)
+    out = (HTML.replace("{OPT_CARDS}", opt_cards).replace("{SVG_SCHEMA}", svg)
                  .replace("{SVG_WIRING}", wiring)
                  .replace("{OPT_BRD_TITLE}", OPT["brd"]["title"])
                  .replace("{OPT_BRD_PRICE}", str(OPT["brd"]["price"]))
