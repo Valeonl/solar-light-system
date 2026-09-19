@@ -80,14 +80,14 @@
  {
   "key": "holder",
   "role": "Держатель предохранителя",
-  "title": "Держатель предохранителя 10А Стандарт со шнуром 300мм 1,25 кв.мм",
-  "price": 114,
-  "days": 6,
-  "delivery": "6 дн.",
+  "title": "Держатель предохранителя (разъём) флажковый с предохранителем 10А, 1 шт",
+  "price": 99,
+  "days": 1,
+  "delivery": "1 дн.",
   "specs": "10 А, флажковый, с готовым шнуром 300 мм",
-  "note": "Ставится в плюсовой провод от аккумулятора — защита от короткого замыкания",
-  "url": "https://www.ozon.ru/product/derzhatel-predohranitelya-10a-standart-so-shnurom-300mm-1-25-kv-mm-2486761095/",
-  "img": "https://ir.ozone.ru/s3/multimedia-1-o/wc500/11708970504.jpg",
+  "note": "В комплекте уже идёт предохранитель 10 А — докупать отдельно не нужно",
+  "url": "https://www.ozon.ru/product/derzhatel-predohranitelya-razem-flazhkovyy-s-predohranitelem-10a-1-sht-2230119633/",
+  "img": "https://ir.ozone.ru/s3/multimedia-1-5/wc500/8458216493.jpg",
   "img_local": "img/holder.webp"
  },
  {
