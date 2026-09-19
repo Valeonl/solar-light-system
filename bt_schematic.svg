@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 540" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" role="img" aria-label="Схема: аккумулятор, плата зарядки, ESP32-C3, OLED-дисплей и Bluetooth-подключение">
+  <defs>
+    <marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .box{fill:#111827;stroke:#334155;stroke-width:2}
+      .lbl{fill:#e2e8f0;font-size:15px;font-weight:600}
+      .sub{fill:#94a3b8;font-size:12.5px}
+      .term{fill:#0f172a;stroke:#475569;stroke-width:1.5}
+      .tname{fill:#cbd5e1;font-size:11px;font-family:ui-monospace,Consolas,monospace}
+      .wp{stroke:#ef4444;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wn{stroke:#64748b;stroke-width:3.4;fill:none;stroke-linecap:round}
+      .wd{stroke:#38bdf8;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-dasharray:7 5}
+      .note{fill:#94a3b8;font-size:12px}
+      .frame{fill:none;stroke:#1e293b;stroke-width:1.5;stroke-dasharray:6 6}
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="540" fill="#0b1220"/>
+  <text x="24" y="34" class="lbl" font-size="18">Схема: аккумулятор → зарядка → ESP32-C3 → OLED, и Bluetooth снаружи</text>
+  <text x="24" y="56" class="sub">Все соединения — разъёмы и шлейфы «мама-мама». Пайка не нужна. Красный — плюс, серый — минус, синий пунктир — данные.</text>
+
+  <!-- Аккумулятор -->
+  <g>
+    <rect x="24" y="120" width="200" height="120" rx="10" class="box"/>
+    <text x="124" y="150" text-anchor="middle" class="lbl">Аккумулятор 18650</text>
+    <text x="124" y="170" text-anchor="middle" class="sub">3,7 В, 2000 мА·ч</text>
+    <text x="124" y="188" text-anchor="middle" class="sub">в холдере с проводами</text>
+    <rect x="52" y="206" width="44" height="20" rx="4" class="term"/><text x="74" y="220" text-anchor="middle" class="tname">+</text>
+    <rect x="152" y="206" width="44" height="20" rx="4" class="term"/><text x="174" y="220" text-anchor="middle" class="tname">−</text>
+  </g>
+
+  <!-- Плата зарядки -->
+  <g>
+    <rect x="288" y="104" width="216" height="152" rx="10" class="box"/>
+    <text x="396" y="132" text-anchor="middle" class="lbl">Плата зарядки TP4056</text>
+    <text x="396" y="152" text-anchor="middle" class="sub">заряд от USB-C</text>
+    <text x="396" y="170" text-anchor="middle" class="sub">защита от переразряда</text>
+    <text x="304" y="196" class="tname">B+ / B−</text>
+    <text x="304" y="234" class="tname">OUT+ / OUT−</text>
+    <rect x="288" y="200" width="52" height="18" rx="4" class="term"/>
+    <rect x="288" y="238" width="52" height="18" rx="4" class="term"/>
+  </g>
+
+  <!-- ESP32-C3 -->
+  <g>
+    <rect x="568" y="104" width="180" height="152" rx="10" class="box"/>
+    <text x="658" y="132" text-anchor="middle" class="lbl">ESP32-C3</text>
+    <text x="658" y="152" text-anchor="middle" class="sub">Wi-Fi + Bluetooth</text>
+    <text x="658" y="170" text-anchor="middle" class="sub">плата Super Mini</text>
+    <text x="580" y="196" class="tname">5V</text>
+    <rect x="568" y="200" width="52" height="18" rx="4" class="term"/>
+    <text x="580" y="234" class="tname">GND</text>
+    <rect x="568" y="238" width="52" height="18" rx="4" class="term"/>
+  </g>
+
+  <!-- OLED -->
+  <g>
+    <rect x="568" y="330" width="180" height="150" rx="10" class="box"/>
+    <text x="658" y="358" text-anchor="middle" class="lbl">OLED 0,96″</text>
+    <text x="658" y="378" text-anchor="middle" class="sub">128×64, I2C</text>
+    <text x="580" y="400" class="tname">VCC GND SDA SCL</text>
+    <rect x="568" y="406" width="150" height="20" rx="4" class="term"/>
+  </g>
+
+  <!-- Телефон/ноутбук -->
+  <g>
+    <rect x="792" y="104" width="124" height="152" rx="10" class="box"/>
+    <text x="854" y="132" text-anchor="middle" class="lbl">Телефон</text>
+    <text x="854" y="152" text-anchor="middle" class="lbl">или ноутбук</text>
+    <text x="854" y="174" text-anchor="middle" class="sub">отправляет</text>
+    <text x="854" y="192" text-anchor="middle" class="sub">текст</text>
+    <text x="854" y="222" text-anchor="middle" class="note">Hermes-Display</text>
+  </g>
+
+  <!-- провода -->
+  <path class="wp" d="M74 206 C 180 150, 240 186, 288 208" marker-end="url(#a2)"/>
+  <path class="wn" d="M174 206 C 200 262, 250 258, 288 246" marker-end="url(#a2)"/>
+  <text x="150" y="132" class="note">аккумулятор → B+/B−</text>
+
+  <path class="wp" d="M340 238 C 460 200, 520 200, 568 208" marker-end="url(#a2)"/>
+  <path class="wn" d="M340 256 C 460 300, 520 260, 568 246" marker-end="url(#a2)"/>
+  <text x="404" y="300" class="note">выход зарядки → 5V платы</text>
+
+  <path class="wd" d="M658 256 C 658 290, 658 300, 658 330" marker-end="url(#a2)"/>
+  <text x="672" y="300" class="note" fill="#38bdf8">4 провода: 3V3, GND, GPIO8 (SDA), GPIO9 (SCL)</text>
+
+  <path class="wd" d="M748 180 C 780 180, 780 180, 792 180" marker-end="url(#a2)"/>
+  <text x="700" y="100" class="note" fill="#38bdf8">Bluetooth (BLE)</text>
+
+  <rect x="24" y="330" width="440" height="150" rx="10" class="frame"/>
+  <text x="42" y="358" class="lbl" font-size="14">Что важно не перепутать</text>
+  <text x="42" y="382" class="sub">1. Плюс и минус: перепутал — сгорает плата</text>
+  <text x="42" y="404" class="sub">2. SDA и SCL: если экран молчит — поменять местами</text>
+  <text x="42" y="426" class="sub">3. Экран питается от 3V3, не от 5V</text>
+  <text x="42" y="448" class="sub">4. Зарядка: у TP4056 на вход USB-C, аккумулятор в B+/B−</text>
+  <text x="42" y="470" class="sub">5. Первая прошивка — по USB с компьютера</text>
+
+  <text x="660" y="510" class="sub">Вариант «одна плата» (TTGO T-Display): всё то же, но экран и зарядка уже внутри платы —</text>
+  <text x="660" y="528" class="sub">соединять нечего, только вставить аккумулятор в разъём.</text>
+</svg>

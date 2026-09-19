@@ -1,0 +1,115 @@
+{
+ "date": "19.09.2026",
+ "variant1": [
+  {
+   "key": "tdisplay",
+   "role": "Плата со экраном",
+   "title": "TTGO T-Display ESP32 Wi-Fi Bluetooth-совместимый модуль 1,14-дюймовый ЖК-ABS Shell",
+   "price": 485,
+   "days": 5,
+   "specs": "ESP32 + цветной дисплей 1,14″ (135×240), разъём для аккумулятора, зарядка по USB-C",
+   "note": "Одна плата — и экран, и Bluetooth, и зарядка. Соединять нечего",
+   "url": "https://www.ozon.ru/product/ttgo-t-display-esp32-wi-fi-bluetooth-sovmestimyy-modul-1-14-dyuymovyy-zhk-abs-shell-3484708535/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-t/wc500/8985439757.jpg",
+   "img_local": "img/bt_tdisplay.webp"
+  },
+  {
+   "key": "lipo",
+   "role": "Аккумулятор",
+   "title": "Аккумулятор (батарея) 103450, 3,7В, 2000 мАч, с платой защиты, разъем коннектора PH2.0 2 pin",
+   "price": 251,
+   "days": 3,
+   "specs": "Li-Po 3,7 В, 2000 мА·ч, с платой защиты и разъёмом",
+   "note": "Важно: у платы разъём JST 1.25 — проверь, что у батареи такой же",
+   "url": "https://www.ozon.ru/product/akkumulyator-batareya-103450-3-7v-2000-mach-s-platoy-zashchity-razem-konnektora-ph2-0-2-pin-5692777979/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-x/wc500/14694827577.jpg",
+   "img_local": "img/bt_lipo.webp"
+  },
+  {
+   "key": "jst",
+   "role": "Переходник (запасной)",
+   "title": "JST MX 1.25 мм 2pin кабель с разъемом 20см. / Разъем на плату JST MX 2pin / 1шт",
+   "price": 139,
+   "days": 1,
+   "specs": "Кабель JST 1.25 мм 2 pin, 20 см, папа+мама",
+   "note": "Нужен, только если разъём аккумулятора не совпадёт с разъёмом платы",
+   "url": "https://www.ozon.ru/product/jst-mx-1-25-mm-2pin-kabel-s-razemom-20sm-razem-na-platu-jst-mx-2pin-1sht-4359428685/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-6/wc500/8486082618.jpg",
+   "img_local": "img/bt_jst.webp"
+  }
+ ],
+ "variant2": [
+  {
+   "key": "c3",
+   "role": "Микроконтроллер",
+   "title": "Плата разработки ESP32-C3 SuperMini Wi-Fi Bluetooth для Arduino",
+   "price": 326,
+   "days": 7,
+   "specs": "ESP32-C3: Wi-Fi + Bluetooth, питание от 3,7 В, размер с ноготь",
+   "note": "Питается прямо от литиевого аккумулятора — повышающий модуль не нужен",
+   "url": "https://www.ozon.ru/product/plata-razrabotki-esp32-c3-supermini-wi-fi-bluetooth-dlya-arduino-1421896577/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-p/wc500/6922190509.jpg",
+   "img_local": "img/bt_c3.webp"
+  },
+  {
+   "key": "oled",
+   "role": "Экран",
+   "title": "OLED дисплей 0.96\" 128x64 I2C голубые пиксели",
+   "price": 249,
+   "days": 5,
+   "specs": "OLED 0,96″, 128×64, I2C, четыре контакта",
+   "note": "Соединяется с платой четырьмя шлейфами «мама-мама»",
+   "url": "https://www.ozon.ru/product/oled-displey-0-96-128x64-i2c-golubye-pikseli-1996553359/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-g/wc500/7570321936.jpg",
+   "img_local": "img/bt_oled.webp"
+  },
+  {
+   "key": "dupont",
+   "role": "Шлейфы",
+   "title": "Соединительный провод Dupont 4 pin мама-мама 20 см, перемычка, шлейф",
+   "price": 97,
+   "days": 3,
+   "specs": "Шлейф 4 провода «мама-мама», 20 см",
+   "note": "Питание и данные для экрана — вставляется руками",
+   "url": "https://www.ozon.ru/product/soedinitelnyy-provod-dupont-4-pin-mama-mama-20-sm-peremychka-shleyf-3701392508/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-c/wc500/9402477852.jpg",
+   "img_local": "img/bt_dupont.webp"
+  },
+  {
+   "key": "cell",
+   "role": "Аккумулятор",
+   "title": "Аккумуляторная батарейка 18650 2000 мАч Li-ion 3,7 В,выпуклый электрод, 1 ШТ",
+   "price": 117,
+   "days": 3,
+   "specs": "18650, 3,7 В, 2000 мА·ч",
+   "note": "Хватит примерно на сутки работы устройства",
+   "url": "https://www.ozon.ru/product/akkumulyatornaya-batareyka-18650-2000-mach-li-ion-3-7-v-vypuklyy-elektrod-1-sht-3936156676/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-r/wc500/11315392083.jpg",
+   "img_local": "img/bt_cell.webp"
+  },
+  {
+   "key": "holder",
+   "role": "Холдер",
+   "title": "Батарейный отсек 1х для аккумуляторов Li-ion 18650 с проводами к Arduino/Слот батарейки для ардуино",
+   "price": 86,
+   "days": 1,
+   "specs": "Отсек под 18650 с готовыми проводами",
+   "note": "Аккумулятор держится в отсеке, паять не нужно",
+   "url": "https://www.ozon.ru/product/batareynyy-otsek-1h-dlya-akkumulyatorov-li-ion-18650-s-provodami-k-arduino-slot-batareyki-2708696421/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-u/wc500/7601881206.jpg",
+   "img_local": "img/bt_holder.webp"
+  },
+  {
+   "key": "tp4056",
+   "role": "Плата зарядки",
+   "title": "Модуль зарядки TP4056 USB Type-C с защитой,зарядное устройство для Li-lon аккумуляторов.",
+   "price": 64,
+   "days": 1,
+   "specs": "TP4056: зарядка по USB-C и защита от переразряда",
+   "note": "Чтобы заряжать устройство от телефона или ноутбука",
+   "url": "https://www.ozon.ru/product/modul-zaryadki-tp4056-usb-type-c-s-zashchitoy-zaryadnoe-ustroystvo-dlya-li-lon-akkumulyatorov-5518679496/",
+   "img": "https://ir.ozone.ru/s3/multimedia-1-c/wc500/9654150720.jpg",
+   "img_local": "img/bt_tp4056.webp"
+  }
+ ]
+}
