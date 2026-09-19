@@ -74,7 +74,7 @@ def item_card(i: dict) -> str:
     img = html.escape(i.get("img_local") or "")
     return f"""
       <article class="card">
-        <div class="card-img"><img src="{img}" alt="{html.escape(i['title'][:80])}" loading="lazy"></div>
+        <div class="card-img"><img src="{img}" alt="{html.escape(i['title'][:80])}"></div>
         <div class="card-body">
           <span class="role">{html.escape(i['role'])}</span>
           <h3>{html.escape(i['title'])}</h3>
